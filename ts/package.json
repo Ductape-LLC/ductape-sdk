@@ -1,0 +1,27 @@
+{
+  "name": "ductape-sdk",
+  "version": "1.0.5",
+  "description": "sdk for using ductaped integrations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "serve": "nodemon ./src/index.ts",
+    "build": "tsc",
+    "test": "npm test"
+  },
+  "author": "Sanni Ifedayo",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "joi": "^17.7.0",
+    "typescript": "^4.9.4",
+    "xml2json": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.11",
+    "@types/xml2json": "^0.11.4"
+  }
+}

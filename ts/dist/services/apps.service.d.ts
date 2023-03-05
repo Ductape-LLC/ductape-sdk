@@ -1,0 +1,15 @@
+export declare const createApp: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const updateApp: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchWorkspaceApps: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchApp: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchAppEnv: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const updateAppEnv: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const createAppEnv: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const createAppFaq: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const updateAppFaq: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const deleteAppFaq: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const createAppSetup: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchAppSetups: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchAppSetupsEnvs: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchSetup: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
+export declare const fetchDomains: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
