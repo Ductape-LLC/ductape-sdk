@@ -4,6 +4,10 @@
 node_modules/
 /node_modules/
 
+# Ignore all directories called dist in current folder and any subfolders.
+dist/
+/dist/
+
 # Packages #
 ############
 *.7z

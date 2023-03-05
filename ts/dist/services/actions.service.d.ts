@@ -1,9 +1,0 @@
-export declare const createActions: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const createFolder: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const fetchAction: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const updateActionData: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const updateEntityData: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const fetchActionData: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const createResponse: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const fetchResponses: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
-export declare const createAppWebhook: (payload: any) => Promise<import("axios").AxiosResponse<any, any>>;
