@@ -16,6 +16,7 @@ export default class ActionsService {
     }
 
     async parsePostmanCollectionv21(payload: ImportPostmanCollectionPayload): Promise<void> {
+        console.log("SAMMY DAVIES JNR");
         return this.actionsRepo.parsePostmanCollectionV21(payload);
     }
 

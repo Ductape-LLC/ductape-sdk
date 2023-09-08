@@ -25,6 +25,7 @@ export default class InputsService implements IInputsService{
             
             return this.inputsRepo.parseData(payload);
         } catch(e) {
+            console.log("PAYLOAD ERR", payload, e)
             throw new Error(this.logsRepo.extractError(e));
         }
     }

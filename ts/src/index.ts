@@ -7,6 +7,7 @@ import { DataTypes, ExpectedValues, ParsedInput, ParsePayload } from "./inputs/i
 import { parseData } from "./inputs/utils/inputs.utils.create";
 import { IIntegrationsService } from "./integrations/integrations.service";
 import LogsService, { ILogsService } from "./logs/logs.service";
+import {data, token} from "./json";
 
 export default class Index {
 
@@ -78,29 +79,3 @@ export {
     InputsService,
     IInputsService
 }
-
-
-const service = new Index();
-
-
-const data = {
-  "name": "Izukchukwu Emmanuel",
-  "dob": "09-08-2021",
-  "residence": {
-    "city": {
-      "uk": "london",
-      "us": "new york",
-      "ng": [{"lagos":"obalende"}, {"abuja": "wuse 2"}, {"ibadan": "bodija"}]
-    }
-  }
-}
-
-
-service.parseData({
-  data,
-    category: Categories.BODY,
-    type: DataTypes.JSON,
-    expected: ExpectedValues.PARSESAMPLE
-}).then((res)=>{
-  console.log(res);
-})

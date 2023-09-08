@@ -1,18 +1,18 @@
 'use strict';
 
-export const USER_BASE_URL: string = 'https://ductape-users-3bubdh4twq-uc.a.run.app';
+export const USER_BASE_URL: string = 'http://localhost:8002';// 'https://ductape-users-3bubdh4twq-uc.a.run.app';
 export const USER_CREATE_URL: string = '/users/v1/create';
 export const USER_LOGIN_URL: string = '/users/v1/login';
 export const USER_FORGOT_URL: string = '/users/v1/forgot';
 
-export const WORKSPACES_BASE_URL: string = 'https://ductape-workspaces-3bubdh4twq-uc.a.run.app';
+export const WORKSPACES_BASE_URL: string = 'http://localhost:8001';// 'https://ductape-workspaces-3bubdh4twq-uc.a.run.app';
 export const WORKSPACE_CREATE_URL: string = '/workspaces/v1/create';
 export const WORKSPACE_FETCH_URL: string = '/workspaces/v1/fetch/:user_id';
 export const WORKSPACE_DEFAULT_CHANGE: string = '/workspaces/v1/update/:user_id';
 export const WORKSPACE_UPDATE_ENVS: string = '/workspaces/v1/update/:workspace_id/defaults/envs';
 export const WORKSPACE_ACCESS_CREATE: string = '';
 
-export const APPS_BASE_URL: string = 'https://ductape-apps-3bubdh4twq-uc.a.run.app';
+export const APPS_BASE_URL: string = 'http://localhost:8004';// 'https://ductape-apps-3bubdh4twq-uc.a.run.app';
 export const APPS_CREATE_URL: string = '/apps/v1/create';
 export const APPS_FETCH_URL: string = '/apps/v1/workspace/:workspace_id/:status';
 export const APP_FETCH_URL: string = '/apps/v1/:app_id';
@@ -27,7 +27,7 @@ export const APP_CREATE_WEBHOOK: string = '/actions/v1/webhook/:app_id';
 export const APP_FAQ_CREATE: string = '/apps/v1/FAQ/:app_id';
 export const APP_FAQ_UPDATE: string = '/apps/v1/FAQ/:app_id/:faq_id';
 
-export const ACTIONS_BASE_URL: string = 'https://ductape-actions-3bubdh4twq-uc.a.run.app';
+export const ACTIONS_BASE_URL: string = 'http://localhost:8005';// 'https://ductape-actions-3bubdh4twq-uc.a.run.app';
 export const ACTIONS_CREATE_URL: string = '/actions/v1/create';
 export const ACTION_FETCH_URL: string = '/actions/v1/:action_id';
 export const ACTION_UPDATE_DATA: string = '/actions/v1/action/:action_id/data/:category';

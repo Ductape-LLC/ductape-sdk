@@ -30,7 +30,7 @@ export const parsePostmanCollectionV21 = async (data: ImportPostmanCollectionPay
             const { name: app_name, description } = info
             // create app
 
-            //console.log(`${g(`UPDATE:`)} ${`app_id not supplied, new app ${app_name} being created`}`)
+            console.log(`${g(`UPDATE:`)} ${`app_id not supplied, new app ${app_name} being created`}`)
 
             const app_data = { token, user_id, app_name, public_key, workspace_id, description, returned: ReturnTypes.SINGLE }
 
@@ -39,7 +39,7 @@ export const parsePostmanCollectionV21 = async (data: ImportPostmanCollectionPay
 
             const app = res.data.data;
 
-            //console.log(`${g(`UPDATE:`)} ${`New app ${app_name} created, app_id: ${y(app._id)}`}`)
+            console.log(`${g(`UPDATE:`)} ${`New app ${app_name} created, app_id: ${y(app._id)}`}`)
 
             app_id = app._id;
 
@@ -373,7 +373,7 @@ export const parsePostmanResponsesV21 = async (payload: Array<PostmanResponseV21
             name: `${tagify(name)}`,
             tag: `${tagify(name)}_${Math.floor(Math.random() * 1000)}`,
             success: false,
-            status_code: String(code),
+            status_code: code? String(code): null,
             returned: ReturnTypes.SINGLE
         }
         try {
