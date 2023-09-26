@@ -7,7 +7,7 @@ import { DataTypes, ExpectedValues, ParsedInput, ParsePayload } from "./inputs/i
 import { parseData } from "./inputs/utils/inputs.utils.create";
 import { IIntegrationsService } from "./integrations/integrations.service";
 import LogsService, { ILogsService } from "./logs/logs.service";
-import {data, token} from "./json";
+// import {data, token} from "./json";
 
 export default class Index {
 
@@ -79,3 +79,45 @@ export {
     InputsService,
     IInputsService
 }
+
+
+const service = new Index();
+
+
+/*const data = {
+  "name": "Izukchukwu Emmanuel",
+  "dob": "09-08-2021",
+  "residence": {
+    "city": {
+      "uk": "london",
+      "us": "new york",
+      "ng": [{"lagos":"obalende"}, {"abuja": "wuse 2"}, {"ibadan": "bodija"}]
+    }
+  }
+}*/
+
+const data = {
+  "user_id": "62cc17ec5a62fd899d256de0",
+  "public_key": "da41198023edc30476b29d661b5623bc6842c652",
+  "base_url": "https://sandbox-api.testapp.co",
+  "expiry": 20,
+  "period": "hours",
+  "method": "POST",
+  "description": "custom setup for sandbox environment"
+};
+
+const type = DataTypes.JSON;
+const category = Categories.RESPONSE;
+const expected = ExpectedValues.PARSESAMPLE;
+
+const func = async () => {
+const d = await service.parseData({data, type, category, expected})
+console.log("len:",d.length);
+}
+
+const runFuncs = async () => {
+  await func(); // Wait for the first func call to complete
+  setTimeout(()=> func(), 5000); // Wait for the second func call to complete
+}
+
+runFuncs();
