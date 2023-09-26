@@ -103,6 +103,10 @@ const data = {
   "expiry": 20,
   "period": "hours",
   "method": "POST",
+  "gold": {
+    'one': 1,
+    "two": 2,
+  },
   "description": "custom setup for sandbox environment"
 };
 
@@ -112,12 +116,12 @@ const expected = ExpectedValues.PARSESAMPLE;
 
 const func = async () => {
 const d = await service.parseData({data, type, category, expected})
-console.log("len:",d.length);
+console.log("len:",d.length, d);
 }
 
 const runFuncs = async () => {
   await func(); // Wait for the first func call to complete
-  setTimeout(()=> func(), 5000); // Wait for the second func call to complete
+  setTimeout(()=> func(), 15000); // Wait for the second func call to complete
 }
 
 runFuncs();
