@@ -8,13 +8,17 @@ import {
 } from '../inputs.types';
 import { toJson } from 'xml2json';
 
-const parsedIndexes: Array<ParsedIndexes> = [];
-
-const saveParsedIndexes = (payload: ParsedIndexes) => {
+const saveParsedIndexes = (
+  parsedIndexes: Array<ParsedIndexes>,
+  payload: ParsedIndexes
+) => {
   parsedIndexes.push(payload);
 };
 
-const fetchParsedIndexes = (payload: ParsedIndexes) => {
+const fetchParsedIndexes = (
+  parsedIndexes: Array<ParsedIndexes>,
+  payload: ParsedIndexes
+) => {
   const { parent_key, level, key } = payload;
   for (let i = 0; i < parsedIndexes.length; i++) {
     if (
@@ -91,7 +95,7 @@ export const parseJSON = (
 
     return arr;
   } else {
-    console.log('L2 CATEGORY', category);
+    // console.log('L2 CATEGORY', category);
     return parseObject({
       data,
       parent_key,
@@ -107,7 +111,8 @@ export const parseObject = (
   payload: ParsePayload
 ): Array<ParsedInput | ParsedSample> => {
   const { data, parent_key, level, parent_index, expected, category } = payload;
-  console.log('L3 CATEGORY', category, data);
+  // console.log('L3 CATEGORY', category, data);
+  const parsedIndexes: Array<ParsedIndexes> = [];
   const fields = [];
   if (data) {
     const keys = Object.keys(data);
@@ -138,7 +143,9 @@ export const parseObject = (
           parent_index,
           level
         });
-      } else if (!fetchParsedIndexes({ parent_key, level, key: keys[i] })) {
+      } else if (
+        !fetchParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i] })
+      ) {
         const sampleValue =
           typeof value === 'object' ? JSON.stringify(value) : value;
         fields.push({
@@ -161,7 +168,7 @@ export const parseObject = (
           level
         });
 
-        saveParsedIndexes({ parent_key, level, key: keys[i] });
+        saveParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i] });
       }
 
       // @ts-ignore

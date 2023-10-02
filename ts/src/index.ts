@@ -122,7 +122,7 @@ const expected = ExpectedValues.PARSESAMPLE;
 
 const func = async () => {
   const d = await service.parseData({ data, type, category, expected });
-  // console.log('len:', d.length, d);
+  console.log('len:', d.length, d);
 };
 
 const runFuncs = async () => {
