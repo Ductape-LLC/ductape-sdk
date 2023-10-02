@@ -15,6 +15,7 @@
   "author": "Sanni Ifedayo",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.5.0",
     "chalk": "^4.1.2",
     "joi": "^17.7.0",
     "typescript": "^4.9.4",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "@types/xml2js": "^0.4.11",
-    "@types/xml2json": "^0.11.4"
+    "@types/xml2json": "^0.11.4",
+    "nodemon": "^3.0.1"
   }
 }
