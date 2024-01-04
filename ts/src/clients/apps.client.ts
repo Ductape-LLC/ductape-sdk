@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, CancelToken } from "axios";
-import { APPS_BASE_URL } from "../config/config.urls";
+import { APPS_BASE_URL } from "../api/urls";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
@@ -9,15 +9,11 @@ const requestInterceptor = async (config: { cancelToken: CancelToken; }) => {
 };
 let instance: AxiosInstance;
 
-const appsClient = (auth: string, contentType: string) => {
+const appsClient = () => {
   if (instance) return instance;
   instance = axios.create({
     baseURL: APPS_BASE_URL,
     timeout: 15000,
-    headers: {
-      'Content-Type': contentType,
-      Authorization: auth
-    },
     withCredentials: false
   });
 

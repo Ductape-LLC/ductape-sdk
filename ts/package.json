@@ -1,6 +1,6 @@
 {
   "name": "ductape-sdk",
-  "version": "1.0.8",
+  "version": "1.0.14",
   "description": "sdk for using ductaped integrations",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,10 @@
   "scripts": {
     "serve": "nodemon ./src/index.ts",
     "build": "tsc",
-    "test": "npm test"
+    "test": "npm test",
+    "test:appBuilder": "nodemon src/test.appBuilder.ts",
+    "test:integrationBuilder": "nodemon src/test.integrationBuilder.ts",
+    "docs": "typedoc --out docs src"
   },
   "author": "Sanni Ifedayo",
   "license": "ISC",

@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, CancelToken } from "axios";
-import { WORKSPACES_BASE_URL } from "../config/config.urls";
+import { WORKSPACES_BASE_URL } from "../api/urls";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();

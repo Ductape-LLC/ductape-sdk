@@ -1,23 +1,22 @@
+import { InputsTypes } from '../../types/enums';
 import {
-  DataTypes,
   ExpectedValues,
-  ParsedInput,
-  ParsedIndexes,
-  ParsedSample,
-  ParsePayload
-} from '../inputs.types';
-import { toJson } from 'xml2json';
+  IParsedInput,
+  IParsedIndexes,
+  IParsedSample,
+  IParsedPayload
+} from '../../types/inputs.types';
 
 const saveParsedIndexes = (
-  parsedIndexes: Array<ParsedIndexes>,
-  payload: ParsedIndexes
+  parsedIndexes: Array<IParsedIndexes>,
+  payload: IParsedIndexes
 ) => {
   parsedIndexes.push(payload);
 };
 
 const fetchParsedIndexes = (
-  parsedIndexes: Array<ParsedIndexes>,
-  payload: ParsedIndexes
+  parsedIndexes: Array<IParsedIndexes>,
+  payload: IParsedIndexes
 ) => {
   const { parent_key, level, key } = payload;
   for (let i = 0; i < parsedIndexes.length; i++) {
@@ -34,22 +33,22 @@ const fetchParsedIndexes = (
 };
 
 export const parseData = (
-  payload: ParsePayload
-): Array<ParsedInput | ParsedSample> => {
+  payload: IParsedPayload
+): Array<IParsedInput | IParsedSample> => {
   const { type } = payload;
 
   if (!type && typeof payload !== 'object') throw 'enter data type';
-  else if (type === DataTypes.JSON || typeof payload === 'object')
+  else if (type === InputsTypes.JSON || typeof payload === 'object')
     return parseJSON(payload);
-  else if (type === DataTypes.XML) return parseXML(payload);
+  else if (type === InputsTypes.XML) return parseXML(payload);
 };
 
 export const parseXML = (
-  payload: ParsePayload
-): Array<ParsedInput | ParsedSample> => {
+  payload: IParsedPayload
+): Array<IParsedInput | IParsedSample> => {
   const { data, parent_key, level, parent_index, expected, category } = payload;
 
-  var json = toJson(String(data), { arrayNotation: false });
+  var json = '{}';
 
   console.log(json);
   return parseJSON({
@@ -63,8 +62,8 @@ export const parseXML = (
 };
 
 export const parseJSON = (
-  payload: ParsePayload
-): Array<ParsedInput | ParsedSample> => {
+  payload: IParsedPayload
+): Array<IParsedInput | IParsedSample> => {
   let { data, parent_key, level, parent_index, expected, category } = payload;
 
   if (!parent_key) parent_key = '';
@@ -108,11 +107,11 @@ export const parseJSON = (
 };
 
 export const parseObject = (
-  payload: ParsePayload
-): Array<ParsedInput | ParsedSample> => {
-  const { data, parent_key, level, parent_index, expected, category } = payload;
+  payload: IParsedPayload
+): Array<IParsedInput | IParsedSample> => {
+  const { data, parent_key, level, parent_index, expected, category, index } = payload;
   // console.log('L3 CATEGORY', category, data);
-  const parsedIndexes: Array<ParsedIndexes> = [];
+  const parsedIndexes: Array<IParsedIndexes> = [];
   const fields = [];
   if (data) {
     const keys = Object.keys(data);
@@ -144,7 +143,7 @@ export const parseObject = (
           level
         });
       } else if (
-        !fetchParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i] })
+        !fetchParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i], index })
       ) {
         const sampleValue =
           typeof value === 'object' ? JSON.stringify(value) : value;
@@ -168,7 +167,7 @@ export const parseObject = (
           level
         });
 
-        saveParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i] });
+        saveParsedIndexes(parsedIndexes, { parent_key, level, key: keys[i], index });
       }
 
       // @ts-ignore

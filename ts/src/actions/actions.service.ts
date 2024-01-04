@@ -1,5 +1,5 @@
 import { ActionsRepo, IActionsRepo } from "./actions.repo";
-import { ImportPostmanCollectionPayload } from "./actions.types";
+import { ImportPostmanCollectionPayload } from "../types/actions.types";
 
 export interface IActionsService {
     parsePostmanCollectionv21(payload: ImportPostmanCollectionPayload): Promise<void>

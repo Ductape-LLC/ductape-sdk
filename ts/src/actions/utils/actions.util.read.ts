@@ -1,6 +1,6 @@
-import { Categories, EntityTypes, Formats, ImportPostmanCollectionPayload, KeyValuePair, Modes, PostmanCollectionV21, PostmanFoldersV21, PostmanRequestV21, PostmanResponseV21, PostmanURLV21, ResponseFormats, ReturnTypes } from "../actions.types";
-import { createApp } from "../../services/apps.service";
-import { createActions, createFolder, createResponse, updateActionData, updateEntityData } from "../../services/actions.service";
+/* import { Categories, EntityTypes, Formats, ImportPostmanCollectionPayload, KeyValuePair, Modes, PostmanCollectionV21, PostmanFoldersV21, PostmanRequestV21, PostmanResponseV21, PostmanURLV21, ResponseFormats, ReturnTypes } from "../../types/actions.types";
+import { createApp } from "../../requests/apps.requests";
+import { createActions, createFolder, createResponse, updateActionData, updateEntityData } from "../../requests/actions.requests";
 import { tagify } from "../../config/constant";
 import { parseJSON } from "../../inputs/utils/inputs.utils.create";
 import { DataTypes, ExpectedValues } from "../../inputs/inputs.types";
@@ -24,7 +24,7 @@ export const parsePostmanCollectionV21 = async (data: ImportPostmanCollectionPay
 
         // //console.log(data)
 
-        /*if(showLogs)*/ //console.log(`${g(`PARSING AND UPLOADING POSTMAN COLLECTION V2.1 TO DUCTAPE ACTIONS`)}`)
+        // if(showLogs) //console.log(`${g(`PARSING AND UPLOADING POSTMAN COLLECTION V2.1 TO DUCTAPE ACTIONS`)}`)
 
         if (info && !app_id) {
             const { name: app_name, description } = info
@@ -423,4 +423,4 @@ const cleanRawJSONData = (data: string) => {
         console.log(e);
         console.log(data);
     }
-}
+}*/

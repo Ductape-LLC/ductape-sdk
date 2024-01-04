@@ -1,16 +1,17 @@
 import * as joi from 'joi';
-import { DataTypes, ExpectedValues, ParsePayload } from '../inputs.types';
+import {  ExpectedValues, IParsedPayload } from '../../types/inputs.types';
+import { InputsTypes } from '../../types/enums';
 
-const schema = joi.object<ParsePayload>({
+const schema = joi.object<IParsedPayload>({
     data: joi.alternatives().conditional('type', { 
-        is: DataTypes.XML, 
+        is: InputsTypes.XML, 
         then: joi.string().required, 
         otherwise: joi.object().required()
     }),
     parent_key: joi.string().optional(),
     level: joi.number().optional(),
     parent_index: joi.number().optional(),
-    type: joi.string().valid(...Object.keys(DataTypes)).optional(),
+    type: joi.string().valid(...Object.keys(InputsTypes)).optional(),
     expected: joi.string().valid(...Object.keys(ExpectedValues)).optional(),
 });
 export default schema;
