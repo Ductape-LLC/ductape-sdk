@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, CancelToken } from "axios";
-// import { LOGS_BASE_URL } from "../api/urls";
+import { LOGS_BASE_URL } from "../api/urls";
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
@@ -12,7 +12,7 @@ let instance: AxiosInstance;
 export const logsClient = (auth: string, contentType: string) => {
   if (instance) return instance;
   instance = axios.create({
-    baseURL: "",//LOGS_BASE_URL,
+    baseURL: LOGS_BASE_URL,
     timeout: 15000,
     headers: {
       'Content-Type': contentType,

@@ -10,3 +10,8 @@ export interface IBuilderInit {
     user_id: string;
     token: string;
 }
+
+export interface ILoggerInit extends IBuilderInit {
+    integration_id: string;
+    feature_id?: string;
+}

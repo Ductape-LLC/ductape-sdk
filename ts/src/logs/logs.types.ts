@@ -4,15 +4,28 @@ export interface genericErrors {
     details: [{ message: string }]
 }
 
-export interface logDataPayload {
+export interface ILogData {
+    name: string;
+    process_id: string;
+    integration_id: string;
     app_id?: string;
     action_id?: string;
     feature_id?: string;
-    data: object;
-    status: status;
+    message?: string;
+    env: string;
+    type: LogEventTypes;
+    data: object | string;
+    status: LogEventStatus;
+    timestamp?: Date;
 }
 
-enum status {
+export enum LogEventTypes {
+    FEATURE = "feature"
+}
+
+export enum LogEventStatus {
     SUCCESS = "success",
     FAIL = "fail",
+    WAITING = "waiting",
+    PROCESSING = "processing"
 }

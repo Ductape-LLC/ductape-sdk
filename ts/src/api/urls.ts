@@ -17,6 +17,10 @@ export const WORKSPACE_ACCESS_CREATE: string = '';
 export const APPS_BASE_URL: string = 'http://localhost:8004';// 'https://ductape-apps-3bubdh4twq-uc.a.run.app';
 export const APPS_CREATE_URL: string = '/apps/v1/create';
 export const APPS_FETCH_URL: string = '/apps/v1/workspace/:workspace_id/:status';
+export const APP_FETCH_BY_TAG: string = '/apps/v1/fetch/tag';
+export const APPS_FETCH_ACCESS_BY_TAG = '/apps/v1/access/:workspace_id/:access_tag';
+
+export const APP_CREATE_ACCESS_TAG = '/apps/v1/access'
 export const APP_CRUD_URL: string = '/apps/v1/:app_id';
 
 export const VALIDATE_APP_BUILDER_SESSION: string = '/apps/v1/builder/validate';
@@ -29,3 +33,7 @@ export const INTEGRATIONS_CREATE_URL: string = '/integrations/v1/create';
 export const INTEGRATIONS_FETCH_URL: string = '/integrations/v1/workspace/:workspace_id/:status';
 export const INTEGRATION_CRUD_URL: string = '/integrations/v1/:integration_id';
 export const CHECK_INTEGRATION_EXISTS: string = '/integrations/v1/check-integration-exists';
+
+
+export const LOGS_BASE_URL: string = 'http://localhost:8008';
+export const LOGS_CREATE_URL: string = '/log/v1/create';

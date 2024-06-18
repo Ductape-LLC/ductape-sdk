@@ -11,25 +11,26 @@ export interface IParsedInput {
     key: string;
     value?: unknown;
     length?: number;
-    type: string;
+    type?: string;
     parent_key?: string;
-    parent_index: number;
-    index: number;
-    level: number;
+    parent_index?: number;
+    index?: number;
+    level?: number;
+    validated?: Boolean;
 }
 
 export interface IParsedSample extends IParsedIndexes{
-    sampleValue: string | number | object;
-    description: string;
+    sampleValue?: string | number | object;
+    description?: string;
     required: boolean;
     maxLength: number;
     minLength: number;
-    decorator: string;
-    decoratorPosition: DecoratorPostions;
+    decorator?: string;
+    decoratorPosition?: DecoratorPostions;
     type: DataTypes;
-    parent_index: number;
-    defaultValue: string | number | string | boolean;
-    defaultType: DefaultTypes;
+    parent_index?: number;
+    defaultValue?: string | number | string | boolean;
+    defaultType?: DefaultTypes;
 }
 
 export interface IParsedPayload {
@@ -44,10 +45,10 @@ export interface IParsedPayload {
 }
 
 export interface IParsedIndexes {
-    parent_key: string; 
-    level: number; 
-    key: string;
-    index: number;
+    parent_key?: string; 
+    level?: number; 
+    key?: string;
+    index?: number;
 }
 
 export enum ExpectedValues {

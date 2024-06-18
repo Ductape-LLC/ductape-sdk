@@ -1,3 +1,4 @@
+import { ISample } from '../../types/appBuilder.types';
 import { InputsTypes } from '../../types/enums';
 import {
   ExpectedValues,
@@ -187,6 +188,60 @@ export const parseObject = (
   return fields;
 };
 
-export const validateInput = (ParsedInput: object, expectedData: object) => {
-  // console.log()
+export const validateInputSchema = (input: Array<IParsedInput>, sample: ISample) => {
+  const { data } = sample;
+
+  input.map((value) => {
+
+    const {
+      type,
+      parent_index,
+      key,
+      level,
+      index,
+      parent_key
+    } = value;
+    if (!data.find((sampleValue) => 
+      sampleValue.key === key && sampleValue.level === level && 
+      sampleValue.parent_key === parent_key && sampleValue.parent_index === parent_index)) {
+        throw new Error(`Invalid input, key: ${key}, level: ${level}, index: ${index}, parent_index: ${parent_index}`)
+    }
+  })
+
+  data.map((value) => {
+    const {
+      minLength,
+      maxLength,
+      decorator,
+      decoratorPosition,
+      type,
+      parent_index,
+      defaultValue,
+      defaultType,
+      required,
+      key,
+      level,
+      index,
+      parent_key
+    } = value;
+
+    const find = input.find((value) =>
+      value.key === key &&
+      value.index === index &&
+      value.level === level &&
+      value.parent_index === parent_index &&
+      value.parent_key === parent_key);
+
+    const flag = `key: ${key}, level: ${level}, index: ${index}, parent_index: ${parent_index}`;
+    if (!find && required) {
+      throw new Error(`${flag} is required!`)
+    }
+
+    /* if (find) {
+      input.validated = true;
+    } */
+
+  })
 };
+
+export const validateInputValues = (input: Array<IParsedInput>, sample: ISample) => {}

@@ -1,0 +1,1221 @@
+{
+	"info": {
+		"_postman_id": "2371e005-2706-4fff-8717-f9172d3ff002",
+		"name": "Auction-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "778610"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"oluwafikayosanni@gmail.com\",\n    \"firstname\": \"oluwafiikayo\",\n    \"lastname\": \"sanni\",\n    \"password\":\"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Create a new user with a unique email address"
+					},
+					"response": [
+						{
+							"name": "Register a User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"oluwafikayosanni@gmail.com\",\n    \"firstname\": \"oluwafiikayo\",\n    \"lastname\": \"sanni\",\n    \"password\":\"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "336"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"150-rjQRTroZTzzIwo5TxtAzBBFd1Is\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 06:07:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"email\": \"oluwafikayosanni@gmail.com\",\n        \"firstname\": \"oluwafiikayo\",\n        \"lastname\": \"sanni\",\n        \"password\": \"5f4dcc3b5aa765d61d8327deb882cf99\",\n        \"refresh_token\": null,\n        \"created_at\": \"2024-03-24T06:07:42.149Z\",\n        \"updated_at\": \"2024-03-24T06:07:42.149Z\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"oluwafikayosanni@gmail.com\",\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login with valid email address and password, and generate access tokens"
+					},
+					"response": [
+						{
+							"name": "Successful Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"oluwafikayosanni@gmail.com\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "728"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d8-1SwZ4+KJgxyIpi0AswMj/84A7nA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 06:09:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"email\": \"oluwafikayosanni@gmail.com\",\n        \"firstname\": \"oluwafiikayo\",\n        \"lastname\": \"sanni\",\n        \"password\": \"5f4dcc3b5aa765d61d8327deb882cf99\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTg2NTM2Mn0.2pGLpJVpZRwnAyB7hLTwtNp-tTsZ0_6VYcOgjkqc6mk\",\n        \"created_at\": \"2024-03-24T06:07:42.149Z\",\n        \"updated_at\": \"2024-03-24T06:07:42.149Z\",\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4NTc2Mn0.d-OtwjuOr97KrfIh9JE7DqfEubPldoanmPgnJymRLao\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This Module Handle User Creation and Access"
+		},
+		{
+			"name": "Auction",
+			"item": [
+				{
+					"name": "Deploy Contract",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTYyOTA1ODYsImV4cCI6MTcxNjMxNTc4Nn0.IdWQJnIIKUW4Hbc7QyoqKh2GL9pjk3RvHe7nVo6wqfY"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"time\": 50000,\n    \"beneficiary\": \"0xe48f2E87f5535ABE82b499E2a501Ce207231cEdA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/deploy",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								"deploy"
+							]
+						},
+						"description": "Deploy a fresh auction contract"
+					},
+					"response": [
+						{
+							"name": "Deploy Contract",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"time\": 50000000,\n    \"beneficiary\": \"0xB282365a9Be8b4D981EA2ec7Cd115fF3D542AD01\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/deploy",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										"deploy"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1910"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"776-vKBkyK73FkCr/qf1jFpbNaKiH2g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 16:37:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"64b6e018-2b40-4604-b5cf-967b8b95a154\",\n        \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"abi\": [\n            {\n                \"type\": \"constructor\",\n                \"inputs\": [\n                    {\n                        \"name\": \"_biddingTime\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    },\n                    {\n                        \"name\": \"_beneficiary\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"stateMutability\": \"nonpayable\"\n            },\n            {\n                \"name\": \"AuctionEnded\",\n                \"type\": \"event\",\n                \"inputs\": [\n                    {\n                        \"name\": \"winner\",\n                        \"type\": \"address\",\n                        \"indexed\": false,\n                        \"internalType\": \"address\"\n                    },\n                    {\n                        \"name\": \"amount\",\n                        \"type\": \"uint256\",\n                        \"indexed\": false,\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"anonymous\": false\n            },\n            {\n                \"name\": \"HighestBidIncreased\",\n                \"type\": \"event\",\n                \"inputs\": [\n                    {\n                        \"name\": \"bidder\",\n                        \"type\": \"address\",\n                        \"indexed\": false,\n                        \"internalType\": \"address\"\n                    },\n                    {\n                        \"name\": \"amount\",\n                        \"type\": \"uint256\",\n                        \"indexed\": false,\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"anonymous\": false\n            },\n            {\n                \"name\": \"auctionEnd\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [],\n                \"stateMutability\": \"nonpayable\"\n            },\n            {\n                \"name\": \"auctionEndTime\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"beneficiary\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"bid\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [],\n                \"stateMutability\": \"payable\"\n            },\n            {\n                \"name\": \"highestBid\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"highestBidder\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"withdraw\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"bool\",\n                        \"internalType\": \"bool\"\n                    }\n                ],\n                \"stateMutability\": \"nonpayable\"\n            }\n        ],\n        \"contract_address\": \"0x5AF6B088D20446B3f36F77FCa54Fd854feA6Abb0\",\n        \"created_at\": \"2024-03-24T16:37:01.648Z\",\n        \"expires_at\": \"2024-03-25T06:30:21.644Z\",\n        \"updated_at\": \"2024-03-24T16:37:01.648Z\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Auction Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "4116b4b9-0051-48c6-82d8-622c3cff42d5"
+								}
+							]
+						},
+						"description": "Fetch auction status by auction_id"
+					},
+					"response": [
+						{
+							"name": "Auction Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"status"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "4116b4b9-0051-48c6-82d8-622c3cff42d5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "229"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e5-7O3mrC8oEoOkrv2oJ9FZOtsVCak\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 16:27:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"beneficiary\": \"0xB282365a9Be8b4D981EA2ec7Cd115fF3D542AD01\",\n        \"auctionEndTime\": \"1711347416\",\n        \"highestBidder\": \"0x0000000000000000000000000000000000000000\",\n        \"highestBid\": \"0\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Auction Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/statistics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"statistics"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "{{auction_id}}"
+								}
+							]
+						},
+						"description": "Fetch auction status by auction_id"
+					},
+					"response": [
+						{
+							"name": "Auction Statistics",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/statistics",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"statistics"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "64b6e018-2b40-4604-b5cf-967b8b95a154"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "96"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"60-dXZj9FZyfN/InoYtXOVgWP2gTN8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 23:07:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"total_value\": 50,\n        \"total_volume\": 1\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Submit Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":  50\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/bid",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"bid"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "{{auction_id}}"
+								}
+							]
+						},
+						"description": "Submit a bid to an auction by auction_id"
+					},
+					"response": [
+						{
+							"name": "Submit Bid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"amount\":  50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/bid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"bid"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "64b6e018-2b40-4604-b5cf-967b8b95a154"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 18:02:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Withdraw Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/withdraw",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"withdraw"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "{{auction_id}}"
+								}
+							]
+						},
+						"description": "Withdraw all bids from an auction"
+					},
+					"response": [
+						{
+							"name": "Withdraw Bid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/withdraw",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"withdraw"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "64b6e018-2b40-4604-b5cf-967b8b95a154"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 18:28:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Auction History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/history",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"history"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "{{auction_id}}"
+								}
+							]
+						},
+						"description": "Fetch Auction History with all Bids and Withdrawals"
+					},
+					"response": [
+						{
+							"name": "Fetch Auction History",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "64b6e018-2b40-4604-b5cf-967b8b95a154"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2464"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9a0-1VhOqmI9UzPWyFlTpaQ3zoqgSEQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 18:33:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"538b0ca9-4c3a-4739-82e6-856669c7cf6b\",\n        \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"abi\": [\n            {\n                \"type\": \"constructor\",\n                \"inputs\": [\n                    {\n                        \"name\": \"_biddingTime\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    },\n                    {\n                        \"name\": \"_beneficiary\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"stateMutability\": \"nonpayable\"\n            },\n            {\n                \"name\": \"AuctionEnded\",\n                \"type\": \"event\",\n                \"inputs\": [\n                    {\n                        \"name\": \"winner\",\n                        \"type\": \"address\",\n                        \"indexed\": false,\n                        \"internalType\": \"address\"\n                    },\n                    {\n                        \"name\": \"amount\",\n                        \"type\": \"uint256\",\n                        \"indexed\": false,\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"anonymous\": false\n            },\n            {\n                \"name\": \"HighestBidIncreased\",\n                \"type\": \"event\",\n                \"inputs\": [\n                    {\n                        \"name\": \"bidder\",\n                        \"type\": \"address\",\n                        \"indexed\": false,\n                        \"internalType\": \"address\"\n                    },\n                    {\n                        \"name\": \"amount\",\n                        \"type\": \"uint256\",\n                        \"indexed\": false,\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"anonymous\": false\n            },\n            {\n                \"name\": \"auctionEnd\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [],\n                \"stateMutability\": \"nonpayable\"\n            },\n            {\n                \"name\": \"auctionEndTime\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"beneficiary\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"bid\",\n                \"type\": \"function\",\n                \"inputs\": [\n                    {\n                        \"name\": \"participant\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"outputs\": [],\n                \"stateMutability\": \"payable\"\n            },\n            {\n                \"name\": \"highestBid\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"uint256\",\n                        \"internalType\": \"uint256\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"highestBidder\",\n                \"type\": \"function\",\n                \"inputs\": [],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address\"\n                    }\n                ],\n                \"stateMutability\": \"view\"\n            },\n            {\n                \"name\": \"withdraw\",\n                \"type\": \"function\",\n                \"inputs\": [\n                    {\n                        \"name\": \"participant\",\n                        \"type\": \"address\",\n                        \"internalType\": \"address payable\"\n                    }\n                ],\n                \"outputs\": [\n                    {\n                        \"name\": \"\",\n                        \"type\": \"bool\",\n                        \"internalType\": \"bool\"\n                    }\n                ],\n                \"stateMutability\": \"nonpayable\"\n            }\n        ],\n        \"contract_address\": \"0x1e8b69c4df94eAc06D2b8223F36118d65d5f6A87\",\n        \"created_at\": \"2024-03-24T18:10:24.283Z\",\n        \"expires_at\": \"2024-03-25T08:03:44.268Z\",\n        \"updated_at\": \"2024-03-24T18:10:24.283Z\",\n        \"bids\": [\n            {\n                \"id\": \"85f09a2f-10ff-4059-ab68-3f1f0d1a262b\",\n                \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n                \"auction_id\": \"538b0ca9-4c3a-4739-82e6-856669c7cf6b\",\n                \"bid\": \"50\",\n                \"created_at\": \"2024-03-24T18:15:00.564Z\"\n            }\n        ],\n        \"withdrawals\": [\n            {\n                \"id\": \"3161fcf4-906d-4d4e-9897-317dba866a73\",\n                \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n                \"auction_id\": \"538b0ca9-4c3a-4739-82e6-856669c7cf6b\",\n                \"created_at\": \"2024-03-24T18:28:48.641Z\"\n            }\n        ]\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "End Auction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v1/auction/:auction_id/end",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auction",
+								":auction_id",
+								"end"
+							],
+							"variable": [
+								{
+									"key": "auction_id",
+									"value": "{{auction_id}}"
+								}
+							]
+						},
+						"description": "Mark an auction as ended"
+					},
+					"response": [
+						{
+							"name": "End Auction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auction/:auction_id/end",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auction",
+										":auction_id",
+										"end"
+									],
+									"variable": [
+										{
+											"key": "auction_id",
+											"value": "64b6e018-2b40-4604-b5cf-967b8b95a154"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"33-KJ1Up7NXfb1n5ShTeriWg/3ZF8M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 18:46:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"message\": \"something_went_wrong\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This module handles Setting up and managing auctions"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Session User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Fetch Logged In User's information"
+					},
+					"response": [
+						{
+							"name": "Session User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyNjA1NjIsImV4cCI6MTcxMTI4...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/user/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6096"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17d0-PFKGitM5FU30ckob6cTbVKMODF4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 16:54:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"email\": \"oluwafikayosanni@gmail.com\",\n        \"firstname\": \"oluwafiikayo\",\n        \"lastname\": \"sanni\",\n        \"password\": \"5f4dcc3b5aa765d61d8327deb882cf99\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyOTMzODEsImV4cCI6MTcxMTg5ODE4MX0.dO6LYtTuaur1T1y4bnyRVUArytHtEgu0GRp79GfMZ2o\",\n        \"wallet_address\": null,\n        \"created_at\": \"2024-03-24T06:07:42.149Z\",\n        \"updated_at\": \"2024-03-24T15:16:21.433Z\",\n        \"contracts\": [\n            {\n                \"id\": \"4116b4b9-0051-48c6-82d8-622c3cff42d5\",\n                \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n                \"abi\": [\n                    {\n                        \"type\": \"constructor\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"_biddingTime\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            },\n                            {\n                                \"name\": \"_beneficiary\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"AuctionEnded\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"winner\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"HighestBidIncreased\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"bidder\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"auctionEnd\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"auctionEndTime\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"beneficiary\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"bid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"payable\"\n                    },\n                    {\n                        \"name\": \"highestBid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"highestBidder\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"withdraw\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"bool\",\n                                \"internalType\": \"bool\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    }\n                ],\n                \"contract_address\": \"0xED41b6bC8007B95D65322b43A8902769a7c2Ba23\",\n                \"created_at\": \"2024-03-24T16:23:36.943Z\",\n                \"expires_at\": null,\n                \"updated_at\": \"2024-03-24T16:23:36.943Z\"\n            },\n            {\n                \"id\": \"4cf929a8-c50f-4c43-b32c-b21c7e5b41c0\",\n                \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n                \"abi\": [\n                    {\n                        \"type\": \"constructor\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"_biddingTime\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            },\n                            {\n                                \"name\": \"_beneficiary\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"AuctionEnded\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"winner\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"HighestBidIncreased\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"bidder\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"auctionEnd\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"auctionEndTime\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"beneficiary\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"bid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"payable\"\n                    },\n                    {\n                        \"name\": \"highestBid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"highestBidder\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"withdraw\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"bool\",\n                                \"internalType\": \"bool\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    }\n                ],\n                \"contract_address\": \"0xbD2f41BC4583Ab87f1Fb89A5f6C14E21Bd29FE81\",\n                \"created_at\": \"2024-03-24T16:36:36.297Z\",\n                \"expires_at\": \"2024-03-24T16:37:26.280Z\",\n                \"updated_at\": \"2024-03-24T16:36:36.297Z\"\n            },\n            {\n                \"id\": \"64b6e018-2b40-4604-b5cf-967b8b95a154\",\n                \"user_id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n                \"abi\": [\n                    {\n                        \"type\": \"constructor\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"_biddingTime\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            },\n                            {\n                                \"name\": \"_beneficiary\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"AuctionEnded\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"winner\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"HighestBidIncreased\",\n                        \"type\": \"event\",\n                        \"inputs\": [\n                            {\n                                \"name\": \"bidder\",\n                                \"type\": \"address\",\n                                \"indexed\": false,\n                                \"internalType\": \"address\"\n                            },\n                            {\n                                \"name\": \"amount\",\n                                \"type\": \"uint256\",\n                                \"indexed\": false,\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"anonymous\": false\n                    },\n                    {\n                        \"name\": \"auctionEnd\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"nonpayable\"\n                    },\n                    {\n                        \"name\": \"auctionEndTime\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"beneficiary\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address payable\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"bid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [],\n                        \"stateMutability\": \"payable\"\n                    },\n                    {\n                        \"name\": \"highestBid\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"uint256\",\n                                \"internalType\": \"uint256\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"highestBidder\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"address\",\n                                \"internalType\": \"address\"\n                            }\n                        ],\n                        \"stateMutability\": \"view\"\n                    },\n                    {\n                        \"name\": \"withdraw\",\n                        \"type\": \"function\",\n                        \"inputs\": [],\n                        \"outputs\": [\n                            {\n                                \"name\": \"\",\n                                \"type\": \"bool\",\n                                \"internalType\": \"bool\"\n                            }\n                        ],\n                        \"stateMutability\": \"nonpayable\"\n                    }\n                ],\n                \"contract_address\": \"0x5AF6B088D20446B3f36F77FCa54Fd854feA6Abb0\",\n                \"created_at\": \"2024-03-24T16:37:01.648Z\",\n                \"expires_at\": \"2024-03-25T06:30:21.644Z\",\n                \"updated_at\": \"2024-03-24T16:37:01.648Z\"\n            }\n        ],\n        \"bids\": []\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add User Wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"wallet_address\": \"0xe48f2E87f5535ABE82b499E2a501Ce207231cEdA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/user/user/wallet",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"user",
+								"wallet"
+							]
+						},
+						"description": "Add a user's wallet address"
+					},
+					"response": [
+						{
+							"name": "Add User Wallet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"wallet_address\": \"0xe48f2E87f5535ABE82b499E2a501Ce207231cEdA\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/v1/user/user/wallet",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"user",
+										"wallet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "584"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"248-eEOO+h4jzcI87HlWQvu90s1Qnio\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 24 Mar 2024 17:23:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": \"0aa23b40-2ba0-4162-a96d-461002f8005e\",\n        \"email\": \"oluwafikayosanni@gmail.com\",\n        \"firstname\": \"oluwafiikayo\",\n        \"lastname\": \"sanni\",\n        \"password\": \"5f4dcc3b5aa765d61d8327deb882cf99\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwYWEyM2I0MC0yYmEwLTQxNjItYTk2ZC00NjEwMDJmODAwNWUiLCJpYXQiOjE3MTEyOTMzODEsImV4cCI6MTcxMTg5ODE4MX0.dO6LYtTuaur1T1y4bnyRVUArytHtEgu0GRp79GfMZ2o\",\n        \"wallet_address\": \"0xe48f2E87f5535ABE82b499E2a501Ce207231cEdA\",\n        \"created_at\": \"2024-03-24T06:07:42.149Z\",\n        \"updated_at\": \"2024-03-24T17:23:44.346Z\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				}
+			],
+			"description": "This module handles user information"
+		}
+	]
+}

@@ -1,11 +1,14 @@
 import appsClient from "../../clients/apps.client";
-import { IApp, IAppExistsResponse, IBuilderSession, IBuilderSessionCreatePayload, ICreateAppBuilder, IPrivKeyLoginPayload } from "../../types/appBuilder.types";
+import { IApp, IAppAccess, IAppExistsResponse, IBuilderSession, IBuilderSessionCreatePayload, ICreateApp, ICreateAppBuilder, IPrivKeyLoginPayload } from "../../types/appBuilder.types";
 import { DataFormats, PublicStates } from "../../types/enums";
+import { IAccess } from "../../types/integrationsBuilder.types";
 import { IRequestExtension } from "../../types/requests.types";
 import {
     APPS_CREATE_URL,
+    APPS_FETCH_ACCESS_BY_TAG,
     APPS_FETCH_URL,
-    APP_CRUD_URL, CHECK_APP_EXISTS, CREATE_APP_BUILDER_SESSION,
+    APP_CREATE_ACCESS_TAG,
+    APP_CRUD_URL, APP_FETCH_BY_TAG, CHECK_APP_EXISTS, CREATE_APP_BUILDER_SESSION,
     VALIDATE_APP_BUILDER_SESSION
 } from "../urls";
 import { generateAxiosConfig } from "../utils/auth.utils";
@@ -16,9 +19,12 @@ export interface IAppApiService {
     createAppBuilderSession(payload: IBuilderSessionCreatePayload): Promise<IBuilderSession>;
     checkAppNameExists(name: string, payload: IRequestExtension): Promise<IApp>;
     fetchApp(app_id: string, auth: IRequestExtension): Promise<IApp>;
-    createApp(payload: ICreateAppBuilder, auth: IRequestExtension): Promise<IApp>;
+    createApp(payload: ICreateApp, auth: IRequestExtension): Promise<IApp>;
     updateApp(app_id: string, payload: Record<string, unknown>, auth: IRequestExtension): Promise<void>;
     fetchWorkspaceApps(status: PublicStates, payload: IRequestExtension): Promise<Array<IApp>>;
+    fetchAccessByTag(access_tag: string, payload: IRequestExtension): Promise<IAccess>;
+    fetchAppByTag(app_tag: string, payload: IRequestExtension): Promise<IApp>;
+    createAppAccess(app_id: string, integration_id: string, access_tag: string, payload: IRequestExtension): Promise<IAppAccess>;
 }
 
 export class AppApiService implements IAppApiService {
@@ -33,6 +39,7 @@ export class AppApiService implements IAppApiService {
             return res.data.data as unknown as IBuilderSession;
 
         } catch (e) {
+            console.log("BAMA!!!!", e);
             throw e;
         }
     }
@@ -71,12 +78,13 @@ export class AppApiService implements IAppApiService {
         try {
 
             const URL = Parameterize(APP_CRUD_URL, ':app_id', app_id);
-            const res = await appsClient().get(
-                `${URL}?user_id=${auth.user_id}&public_key=${auth.public_key}`
-                , generateAxiosConfig(auth.token, DataFormats.JSON));
+
+            const res = await appsClient().get(`${URL}?user_id=${auth.user_id}&public_key=${auth.public_key}`,
+                 generateAxiosConfig(auth.token, DataFormats.JSON));
 
             return res.data.data as unknown as IApp;
         } catch (e) {
+            console.log("SABINUS!!! ===>>>>",e);
             throw e;
         }
     };
@@ -97,8 +105,6 @@ export class AppApiService implements IAppApiService {
 
     async updateApp(app_id: string, payload: Record<string, unknown>, auth: IRequestExtension): Promise<void> {
         try {
-
-            console.log("Payload",JSON.stringify(payload));
             const { token, ...user_access } = auth;
             const URL = Parameterize(APP_CRUD_URL, ':app_id', app_id);
             await appsClient().put(URL, {...payload, ...user_access}, generateAxiosConfig(token, DataFormats.JSON))
@@ -124,6 +130,58 @@ export class AppApiService implements IAppApiService {
             throw e;
         }
 
+    }
+
+    async fetchAccessByTag(access_tag: string, payload: IRequestExtension): Promise<IAccess> {
+
+        try { 
+
+            const { workspace_id, token, user_id, public_key } = payload; 
+
+            let URL = Parameterize(APPS_FETCH_ACCESS_BY_TAG, ':workspace_id', workspace_id)
+            URL = Parameterize(URL, ':access_tag', access_tag);
+
+            const res = await appsClient().get(`${URL}?user_id=${user_id}&public_key=${public_key}`, generateAxiosConfig(token, DataFormats.JSON))
+
+            return res.data.data as unknown as IAccess
+
+        } catch (e) {
+            throw e;
+        }
+        
+    }
+
+
+    async fetchAppByTag(app_tag: string, payload: IRequestExtension): Promise<IApp> {
+
+        try { 
+
+            const { workspace_id, token, user_id, public_key } = payload; 
+
+            let URL = Parameterize(APP_FETCH_BY_TAG, ':tag', app_tag);
+
+            const res = await appsClient().get(`${URL}?user_id=${user_id}&public_key=${public_key}&tag=${app_tag}`, generateAxiosConfig(token, DataFormats.JSON))
+
+            return res.data.data as unknown as IApp
+
+        } catch (e) {
+            throw e;
+        }
+        
+    }
+
+    async createAppAccess(app_id: string, integration_id: string, access_tag: string, payload: IRequestExtension): Promise<IAppAccess> {
+        try { 
+
+            const { token, ...data } = payload; 
+
+            const res = await appsClient().post(`${APP_CREATE_ACCESS_TAG}`, {app_id, integration_id, access_tag, ...data}, generateAxiosConfig(token, DataFormats.JSON))
+
+            return res.data.data as unknown as IAppAccess;
+
+        } catch (e) {
+            throw e;
+        }       
     }
 
 }

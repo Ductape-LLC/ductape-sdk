@@ -20,6 +20,11 @@ export enum AppComponents {
     EVENT = "event",
     AUTH = "auth",
     ENV = "env",
+    CONSTANT = "constants",
+    VARIABLE = "variables",
+    VALIDATION = "validation",
+
+    ACTION_BULK = "action_bulk",
 
     ACTION_RESPONSE = "action_response",
 }
@@ -32,6 +37,7 @@ export enum RequestAction {
 
 export enum IntegrationComponents {
     ENV = "env",
+    APP = "app",
     DATABASE = "database",
     FUNCTION = "function",
     CACHE = "cache",
@@ -45,15 +51,39 @@ export enum AppEventSetupTypes {
     CALLBACK = "callback"
 }
 
+
+export enum AuthTypes {
+    TOKEN = "token_access", // input a token you already have
+    CREDENTIALS = "credential_access", // you have credentials to fetch token
+    // FETCH_TOKEN = "fetch_token_access", // you will fetch access token
+    // FETCH_CREDENTIALS = "fetch_credential_access" // you will fetch credentials to fetch token
+}
+
 export enum DataTypes {
     STRING = "string",
+    NUMBER_STRING = "numberstring",
     INTEGER = "number",
     FLOAT = "float",
     DOUBLE = "double",
     UUID = "uuid",
     ARRAY = "array",
     OBJECT = "object",
-    BOOLEAN = "boolean"
+    BOOLEAN = "boolean",
+
+    // TODO: handle the array types below
+    /*STRING_ARRAY = "string_array",
+    INTEGER_ARRAY = "integer_array",
+    FLOAT_ARRAY = "float_array",
+    DOUBLE_ARRAY = "double_array",
+    UUID_ARRAY = "uuid_array",
+    BOOLEAN_ARRAY = "boolean_array",*/
+}
+
+export enum AppCategories {
+    BODY = "body",
+    HEADER = "headers",
+    PARAMS = "params",
+    QUERY = "query",
 }
 
 export enum Categories {
@@ -63,9 +93,9 @@ export enum Categories {
     PARAMS = "params",
     QUERY = "query",
     INPUT = "input",
-    SETUP = "setup",
+    SETUP = "auth",
     ACTION = "action",
-    WEBHOOK = "webhook"
+    WEBHOOK = "event"
 }
 
 export enum DefaultTypes {
@@ -82,7 +112,8 @@ export enum DecoratorPostions {
 
 export enum InputsTypes {
     JSON = "json",
-    XML = "xml"
+    XML = "xml",
+    HTML = "html"
 }
 
 export enum SuccessMarkerType {
@@ -165,7 +196,8 @@ export enum DataFormats {
     JSON="application/json",
     URLENCODED="application/x-www-form-urlencoded",
     FORMDATA="multipart/form-data",
-    SOAP="SOAP"
+    SOAP="SOAP",
+    HTML="html"
 }
 
 export enum TokenPeriods {
@@ -176,4 +208,8 @@ export enum TokenPeriods {
     WEEKS = "weeks",
     MONTHS = "months",
     YEARS = "years"
+}
+
+export enum Languages {
+    JAVASCRIPT = "js",
 }

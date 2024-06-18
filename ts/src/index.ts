@@ -9,9 +9,12 @@ import { red, green, blue } from 'chalk';
 import { IIntegration } from "./types/integrationsBuilder.types";
 import { PublicStates } from "./types/enums";
 import { IIntegrationsApiService, IntegrationsApiService } from "./api/services/integrationsApi.service";
+import ImportService, { IImportService } from "./imports/imports.service";
+import ProcessorService, { IProcessorService } from "./processor/services/processor.service";
 
 export interface IDuctape {
     getAppBuilder(): Promise<IAppBuilderService>;
+    getActionImporter(): Promise<IImportService>;
     getIntegrationBuilder(): Promise<IIntegrationsBuilderService>;
     fetchWorkspaceApps(status: PublicStates): Promise<Array<IApp>>;
     fetchWorkspaceProjects(status: PublicStates): Promise<Array<IIntegration>>;
@@ -60,11 +63,35 @@ export default class Ductape implements IDuctape {
         })
     }
 
+    public async getActionImporter(): Promise<IImportService> {
+
+        if(!this.token) await this.initUserAuth()
+        return new ImportService({
+            workspace_id: this.workspace_id,
+            public_key: this.public_key,
+            user_id: this.user_id,
+            token: this.token
+        })
+    }
+
     public async getIntegrationBuilder(): Promise<IIntegrationsBuilderService> {
         if(!this.token) await this.initUserAuth()
 
         if(!this.public_key) throw new Error('No Public Key')
         return new IntegrationBuilder({
+            workspace_id: this.workspace_id,
+            public_key: this.public_key,
+            user_id: this.user_id,
+            token: this.token
+        })
+    }
+
+    public async getProcessor(): Promise<IProcessorService> {
+        if(!this.token) await this.initUserAuth()
+
+        if(!this.public_key) throw new Error('No Public Key')
+
+        return new ProcessorService({
             workspace_id: this.workspace_id,
             public_key: this.public_key,
             user_id: this.user_id,

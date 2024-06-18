@@ -9,7 +9,7 @@ import { Parameterize } from "../utils/strings.utils";
 export interface IIntegrationsApiService {
 
     createIntegration(payload: ICreateIntegrationsBuilder, auth: IRequestExtension): Promise<IIntegration>;
-    updateIntegration(integration_id: string, payload: Partial<ICreateIntegrationsPayload>, auth: IRequestExtension): Promise<void>;
+    updateIntegration(integration_id: string, payload: Record<string, unknown>, auth: IRequestExtension): Promise<void>;
     checkIntegrationNameExists(name: string, auth: IRequestExtension): Promise<IIntegration>;
     fetchIntegration(integration_id: string, auth: IRequestExtension): Promise<IIntegration>;
     fetchWorkspaceIntegrations(status: PublicStates, payload: IRequestExtension): Promise<Array<IIntegration>>;
@@ -35,6 +35,7 @@ export class IntegrationsApiService implements IIntegrationsApiService {
 
             const URL = Parameterize(INTEGRATION_CRUD_URL, ":integration_id", integration_id);
             const { token, ...userAuthData } = auth;
+            // console.log("PAYLOAD ====>>>>>",payload)
             await integrationsClient().put(URL, {...payload, ...userAuthData}, generateAxiosConfig(token, DataFormats.JSON));
 
         } catch (e) {
@@ -63,10 +64,10 @@ export class IntegrationsApiService implements IIntegrationsApiService {
 
             const res = await integrationsClient().post(CHECK_INTEGRATION_EXISTS, { name, ...userAuthData}, generateAxiosConfig(token, DataFormats.JSON))
 
-            console.log(res);
+            // console.log(res);
             return res.data.data as unknown as IIntegration;
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             throw e;
         }
     }

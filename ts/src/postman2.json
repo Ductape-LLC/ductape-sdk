@@ -1,0 +1,4621 @@
+{
+	"info": {
+		"_postman_id": "3542a3e2-cd4b-4c90-a488-7426ad2e254c",
+		"name": "Cats Api",
+		"description": "The cats api defines the functionality of a cats adpotion agency. It allows for users to register, login and interact with cats up for adoption. It also contains basic functionality for the cat adoption agency to manage its users and cats",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "778610"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Oluwafikayo\",\n    \"last_name\": \"Sanni\",\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"username\": \"oluwafikayomi\",\n    \"password\": \"@Test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/auth/register",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Creates a new User and defaults to the role 'user'"
+					},
+					"response": [
+						{
+							"name": "Empty Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001v1/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "192"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c0-ljbeWvKs/6osPURDK56Ab7mR980\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:03:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"first_name must be a string\",\n        \"last_name must be a string\",\n        \"email must be an email\",\n        \"username must be a string\",\n        \"password must be a string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Invalid Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Oluwafikayo\",\n    \"last_name\": \"Sanni\",\n    \"email\": \"fikayo.sanni\",\n    \"username\": \"oluwafikayomi\",\n    \"password\": \"@Test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/register",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-3V3Uy1KR57m8txxwRQ1zEUNG0HY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:05:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"email must be an email\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Credentials in use",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Oluwafikayo\",\n    \"last_name\": \"Sanni\",\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"username\": \"oluwafikayomi\",\n    \"password\": \"@Test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/register",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-SGIm/NDfw91c0v4+jHFG4P3k23k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:47:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"user credential in use\"\n}"
+						},
+						{
+							"name": "Successful Registration",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Oluwafikayo\",\n    \"last_name\": \"Sanni\",\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"username\": \"oluwafikayomi\",\n    \"password\": \"@Test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/register",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "339"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"153-GN87/4YcB0nkfiD7REFdePajVy0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:46:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"first_name\": \"Oluwafikayo\",\n        \"last_name\": \"Sanni\",\n        \"email\": \"fikayo.sanni@gmail.com\",\n        \"username\": \"oluwafikayomi\",\n        \"password\": \"f926b91963b91e3e46d68f694ac5f4d5\",\n        \"refresh_token\": null,\n        \"id\": 3,\n        \"created_at\": \"2024-04-22T09:46:01.786Z\",\n        \"update_at\": \"2024-04-22T09:46:01.786Z\",\n        \"roles\": [\n            \"user\"\n        ]\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"password\": \"@Test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/auth/login",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login with email and password and get the user's access and refresh token"
+					},
+					"response": [
+						{
+							"name": "Empty Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001v1/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-+QZjlBDKtVc93zBWbjKXusYVqIw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:49:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"email must be an email\",\n        \"password must be a string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Invalid Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"fikayo.sannigmail.com\",\n    \"password\": \"@Test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/login",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-3V3Uy1KR57m8txxwRQ1zEUNG0HY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:54:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"email must be an email\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"password\": \"pass\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/login",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"38-rhcIhIG2vpAQz1TM+bZp/NRvAe4\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:52:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"invalid login credentials\"\n}"
+						},
+						{
+							"name": "Successful Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"fikayo.sanni@gmail.com\",\n    \"password\": \"@Test1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/login",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "631"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"277-A1yRF+CP2O+2eqhZBETbscmcdkU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 09:53:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": 3,\n        \"created_at\": \"2024-04-22T09:46:01.786Z\",\n        \"update_at\": \"2024-04-22T09:46:01.786Z\",\n        \"first_name\": \"Oluwafikayo\",\n        \"last_name\": \"Sanni\",\n        \"email\": \"fikayo.sanni@gmail.com\",\n        \"username\": \"oluwafikayomi\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzNzc5NjEwLCJleHAiOjE3MTQzODQ0MTB9.VoKbqGhOTG_jv1EqjIszgWeIb0WepCqVxk-73P3BNkM\",\n        \"roles\": [\n            \"user\"\n        ],\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzNzc5NjEwLCJleHAiOjE3MTM4MDQ4MTB9.zhBY-D-GUsewRjrkqYZD4R3tiGx6H_aw160hjXEcHk8\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Session User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/auth/me",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"me"
+							]
+						},
+						"description": "Fetch User Details of a Session User"
+					},
+					"response": [
+						{
+							"name": "Invalid Auth Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "zooma",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5001v1/auth/me",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 16:42:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Successful Fetched Session User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/auth/me",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f2-tRLBRakz5vK5JQ4xPoe4PPEO8B8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 16:44:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": 3,\n        \"created_at\": \"2024-04-22T09:46:01.786Z\",\n        \"update_at\": \"2024-04-22T16:44:20.816Z\",\n        \"first_name\": \"Oluwafikayo\",\n        \"last_name\": \"Sanni\",\n        \"email\": \"fikayo.sanni@gmail.com\",\n        \"username\": \"oluwafikayomi\",\n        \"password\": \"f926b91963b91e3e46d68f694ac5f4d5\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA0MjYwLCJleHAiOjE3MTQ0MDkwNjB9.mGbG2v_KkhNE31rM0hcmVZKNtTApIg3r8kU7Bq71OvE\",\n        \"roles\": [\n            \"user\"\n        ]\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Tokens",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA0MjYwLCJleHAiOjE3MTQ0MDkwNjB9.mGbG2v_KkhNE31rM0hcmVZKNtTApIg3r8kU7Bq71OvE\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/auth/refresh",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						},
+						"description": "Supply a valid refresh token and get a new access token and refresh token"
+					},
+					"response": [
+						{
+							"name": "Empty Request",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001v1/auth/refresh",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "122"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7a-Ug2WyxNjBtcZ2j+IvM/4q3dSktQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 16:59:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"refresh_token must be a jwt string\",\n        \"refresh_token must be a string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Invalid Format",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"oliver-twist\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/refresh",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-lH/Cn8fTLt+dAhrTjbpbURI7500\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 17:00:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"refresh_token must be a jwt string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Invalid Refresh Token",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA0MjYwLCJleHAiOjE3MTQ0MDkwNjB9.mGbG2v_KkhNE31rM0hcmVZKNtTApIg3r8kU7Bq71OvE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/refresh",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 17:01:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Successful Refresh",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA0MjYwLCJleHAiOjE3MTQ0MDkwNjB9.mGbG2v_KkhNE31rM0hcmVZKNtTApIg3r8kU7Bq71OvE\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/refresh",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "421"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a5-0+w1IoEwx5zViZpuJBXxPzFfagM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 16:58:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA1MTI3LCJleHAiOjE3MTM4MzAzMjd9.DH6UXkWOEo_J9rrdK5A1XR9veZrTDdpGnwOgxzgr4Pc\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA1MTI3LCJleHAiOjE3MTQ0MDk5Mjd9.CheyGUcT2hS_Cu2RZiPoeu5gjWj0YGtUL54tG2jHYis\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/auth/logout",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Enforce logout on the backend by invalidating the user's refresh token"
+					},
+					"response": [
+						{
+							"name": "Invalid Auth Header",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5001v1/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 17:04:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Successful Logout",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/auth/logout",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 17:03:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"password\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/auth/change-password",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"auth",
+								"change-password"
+							]
+						},
+						"description": "Change session user's password"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001v1/auth/change-password",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:36:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Successful Change",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/change-password",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:37:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Auth module, this module defines user creation, authentication and authorization. It contains endpoints for managinf access to the cats api"
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Make User Admin (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/users/make-admin/:user_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"users",
+								"make-admin",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "{{non_admin_id}}"
+								}
+							]
+						},
+						"description": "Admin Functionality for granting another user the admin role"
+					},
+					"response": [
+						{
+							"name": "Failed Non Admin Access",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5001v1/users/make-admin/:user_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"users",
+										"make-admin",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 20:10:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Successfully Make Admin",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/users/make-admin/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										"make-admin",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "{{non_admin_id}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 17:58:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "All Users (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/users?perPage=20&page=1",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20",
+									"description": "optional"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional"
+								}
+							]
+						},
+						"description": "Admin function to fetch all users"
+					},
+					"response": [
+						{
+							"name": "Failed Non Admin Access",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer...",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:5001v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 20:11:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Successfully Fetch Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/users",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1231"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4cf-55FFUAhbamz8cm5H39lAeWJNJfM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 18:00:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 4,\n            \"created_at\": \"2024-04-22T17:39:06.572Z\",\n            \"update_at\": \"2024-04-22T17:50:17.752Z\",\n            \"first_name\": \"Oluwafikayo\",\n            \"last_name\": \"Sanni\",\n            \"email\": \"sanni.oluwafikayo@gmail.com\",\n            \"username\": \"oluwafikayomi\",\n            \"password\": \"f926b91963b91e3e46d68f694ac5f4d5\",\n            \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsInJvbGVzIjpbInVzZXIiLCJhZG1pbiJdLCJpYXQiOjE3MTM4MDgyMTcsImV4cCI6MTcxNDQxMzAxN30.JH2OMFAOQPRirRCzoYx4vDwl5l-RojvmMokjHcj7vtk\",\n            \"roles\": [\n                \"user\",\n                \"admin\"\n            ]\n        },\n        {\n            \"id\": 3,\n            \"created_at\": \"2024-04-22T09:46:01.786Z\",\n            \"update_at\": \"2024-04-22T17:58:34.202Z\",\n            \"first_name\": \"Oluwafikayo\",\n            \"last_name\": \"Sanni\",\n            \"email\": \"fikayo.sanni@gmail.com\",\n            \"username\": \"oluwafikayomi\",\n            \"password\": \"f926b91963b91e3e46d68f694ac5f4d5\",\n            \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA4MzU3LCJleHAiOjE3MTQ0MTMxNTd9.yfjOj5CupZIG42BmUJ94QF98HnZ5vpEqXxlPpdBBeQQ\",\n            \"roles\": [\n                \"user\"\n            ]\n        }\n    ],\n    \"meta\": {\n        \"first\": \"http://localhost:5001/api/v1/users?page=1\",\n        \"last\": \"http://localhost:5001/api/v1/users?page=NaN\",\n        \"prev\": \"http://localhost:5001/api/v1/users?page=NaN\",\n        \"next\": \"http://localhost:5001/api/v1/users?page=NaN\",\n        \"currentPage\": null,\n        \"previousPage\": null,\n        \"lastPage\": null,\n        \"total\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Jackie\",\n    \"last_name\": \"Sparrow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/users/:user_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Admin function for updating a user by their user id"
+					},
+					"response": [
+						{
+							"name": "Failed Non Admin Access",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer...",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackie\",\n    \"last_name\": \"Sparrow\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001v1/users/:user_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001v1",
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 20:09:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Invalid Personal Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackie\",\n    \"last_name\": \"Sparrow\",\n    \"password\": \"password\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/users/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-PS5v35GHhjNH6q2WGUazxsCm6/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:16:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"property password should not exist\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Successful Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackson\",\n    \"last_name\": \"Sparrow\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/users/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:17:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Session User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Jackson\",\n    \"last_name\": \"Sparrow\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/users",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "Allows a user to update their non identifying attributes"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackson\",\n    \"last_name\": \"Sparrow\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/users",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:23:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Invalid Data",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackson\",\n    \"last_name\": \"Sparrow\",\n    \"password\": \"9019292\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/users",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-PS5v35GHhjNH6q2WGUazxsCm6/A\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:24:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"property password should not exist\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Successful Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Jackson\",\n    \"last_name\": \"Sparrow\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/users",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:25:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch User (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/users/:user_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"users",
+								":user_id"
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": "{{non_admin_id}}"
+								}
+							]
+						},
+						"description": "Allows admin to fetch any user by id"
+					},
+					"response": [
+						{
+							"name": "Failed Non Admin Access",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/users/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "{{non_admin_id}}"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "69"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"45-MZJWZc+Y+RUbHpnhz2B2Vipii24\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 18:05:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Forbidden resource\",\n    \"error\": \"Forbidden\",\n    \"statusCode\": 403\n}"
+						},
+						{
+							"name": "Non Existent User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/users/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "25"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-t5W8rLi6c4ib2a2j1+uPJFnleBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:46:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"not found\"\n}"
+						},
+						{
+							"name": "Successfully Fetch User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/users/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"users",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "{{non_admin_id}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "498"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f2-ICcaxBaJBmRQwHBna0Zg98hoAwk\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 18:05:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": 3,\n        \"created_at\": \"2024-04-22T09:46:01.786Z\",\n        \"update_at\": \"2024-04-22T17:58:34.202Z\",\n        \"first_name\": \"Oluwafikayo\",\n        \"last_name\": \"Sanni\",\n        \"email\": \"fikayo.sanni@gmail.com\",\n        \"username\": \"oluwafikayomi\",\n        \"password\": \"f926b91963b91e3e46d68f694ac5f4d5\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsInJvbGVzIjpbInVzZXIiXSwiaWF0IjoxNzEzODA4MzU3LCJleHAiOjE3MTQ0MTMxNTd9.yfjOj5CupZIG42BmUJ94QF98HnZ5vpEqXxlPpdBBeQQ\",\n        \"roles\": [\n            \"user\"\n        ]\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				}
+			],
+			"description": "User management module, for the administrator to have an overview of users, and for users to manage their accounts"
+		},
+		{
+			"name": "Cats",
+			"item": [
+				{
+					"name": "Create Cat (Admin)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Dexter\",\n    \"birthday\": \"2024-03-24T06:07:42.149Z\",\n    \"breed\": \"persian\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/cats",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"cats"
+							]
+						},
+						"description": "Allows admin to create a cat"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:41:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Non Admin Access",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:41:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Invalid Request Body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"85-pQmT2OhPIh8heaJW2i5/Fmn+B58\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 21:42:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"name must be a string\",\n        \"age must be an integer number\",\n        \"breed must be a string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Cat Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Portiphar\",\n    \"birthday\": \"2024-03-24T06:07:42.149Z\",\n    \"breed\": \"iberian\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "465"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d1-7ZPrUlgnrYUdLsHgwD98TbmQP+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:10:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"name\": \"Portiphar\",\n        \"birthday\": \"2024-03-24T06:07:42.149Z\",\n        \"breed\": \"iberian\",\n        \"user_id\": 4,\n        \"user\": {\n            \"id\": 4,\n            \"created_at\": \"2024-04-22T17:39:06.572Z\",\n            \"update_at\": \"2024-04-22T21:17:28.582Z\",\n            \"first_name\": \"Jackson\",\n            \"last_name\": \"Sparrow\",\n            \"email\": \"sanni.oluwafikayo@gmail.com\",\n            \"username\": \"oluwafikayomi\",\n            \"roles\": [\n                \"user\",\n                \"admin\"\n            ]\n        },\n        \"id\": 2,\n        \"created_at\": \"2024-04-22T22:10:08.773Z\",\n        \"update_at\": \"2024-04-22T22:10:08.773Z\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Cat (Admin)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{admin_auth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Delilah\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}v1/cats/:cat_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"cats",
+								":cat_id"
+							],
+							"variable": [
+								{
+									"key": "cat_id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Allows admin to update a cat's information"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:23:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Non Admin Access",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:24:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Invalid Request Body",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"category\": \"japanese\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"59-gWFC0KVnhT6nwKI/C9V64zpj+6g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:25:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": [\n        \"property category should not exist\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Cat Updated",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Delilah\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:26:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Cat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}v1/cats/:cat_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"cats",
+								":cat_id"
+							],
+							"variable": [
+								{
+									"key": "cat_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Fetch a cat by their cat id"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:15:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Non Existent Cat",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "25"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-t5W8rLi6c4ib2a2j1+uPJFnleBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:44:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"not found\"\n}"
+						},
+						{
+							"name": "Cat Fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "465"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d1-0KJdN1DW5gpcpcmSOyE5baSL2hE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:20:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"id\": 2,\n        \"created_at\": \"2024-04-22T22:10:08.773Z\",\n        \"update_at\": \"2024-04-22T22:10:08.773Z\",\n        \"name\": \"Portiphar\",\n        \"birthday\": \"2024-03-24T06:07:42.149Z\",\n        \"breed\": \"iberian\",\n        \"user_id\": 4,\n        \"user\": {\n            \"id\": 4,\n            \"created_at\": \"2024-04-22T17:39:06.572Z\",\n            \"update_at\": \"2024-04-22T21:17:28.582Z\",\n            \"first_name\": \"Jackson\",\n            \"last_name\": \"Sparrow\",\n            \"email\": \"sanni.oluwafikayo@gmail.com\",\n            \"username\": \"oluwafikayomi\",\n            \"roles\": [\n                \"user\",\n                \"admin\"\n            ]\n        }\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch All Cats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/cats?perPage=20&page=1",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"cats"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20",
+									"description": "optional"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional"
+								}
+							]
+						},
+						"description": "fetch all cats in a paginated manner"
+					},
+					"response": [
+						{
+							"name": "No Auth",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:10:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Fetch All Cats",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "562"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"232-yn9Wk1yPHCam1X1paBCO1cboJ4Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:14:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"cat_id\": 2,\n            \"cat_name\": \"Portiphar\",\n            \"cat_birthday\": \"2024-03-24T06:07:42.149Z\",\n            \"cat_breed\": \"iberian\",\n            \"favorite_num\": \"0\"\n        },\n        {\n            \"cat_id\": 1,\n            \"cat_name\": \"Dexter\",\n            \"cat_birthday\": \"2024-03-24T06:07:42.149Z\",\n            \"cat_breed\": \"persian\",\n            \"favorite_num\": \"0\"\n        }\n    ],\n    \"meta\": {\n        \"first\": \"http://localhost:5001/api/v1/cats?page=1\",\n        \"last\": \"http://localhost:5001/api/v1/cats?page=NaN\",\n        \"prev\": \"http://localhost:5001/api/v1/cats?page=NaN\",\n        \"next\": \"http://localhost:5001/api/v1/cats?page=NaN\",\n        \"currentPage\": null,\n        \"previousPage\": null,\n        \"lastPage\": null,\n        \"total\": 2\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Cats (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Allows admin delete a cat by id"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Apr 2024 04:36:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Non Admin Auth",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Apr 2024 04:42:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "Cat Deleted",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/cats/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"cats",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Apr 2024 04:59:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Cats management module, contains endpoints that have to deal with the cats inventory of the adoption agency"
+		},
+		{
+			"name": "Favorites",
+			"item": [
+				{
+					"name": "Like a Cat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}v1/favorites/:cat_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"favorites",
+								":cat_id"
+							],
+							"variable": [
+								{
+									"key": "cat_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Allows a user to like a cat"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:36:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Cat Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c-tuh2LpitMOurQ8fUiz4twdsY3MU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:37:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"cat not found\"\n}"
+						},
+						{
+							"name": "Like Exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-AYEHxOjiAfssiyC4U3DzUVLboKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:00:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"message\": \"resource exists\"\n}"
+						},
+						{
+							"name": "Successfully Liked",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "797"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31d-brdBwEXgi5zEwMT3uveXJiO2wQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:47:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"data\": {\n        \"cat_id\": 2,\n        \"user_id\": 3,\n        \"cat\": {\n            \"id\": 2,\n            \"created_at\": \"2024-04-22T22:10:08.773Z\",\n            \"update_at\": \"2024-04-22T22:26:50.653Z\",\n            \"name\": \"Delilah\",\n            \"birthday\": \"2024-03-24T06:07:42.149Z\",\n            \"breed\": \"iberian\",\n            \"user_id\": 4,\n            \"user\": {\n                \"id\": 4,\n                \"created_at\": \"2024-04-22T17:39:06.572Z\",\n                \"update_at\": \"2024-04-22T21:17:28.582Z\",\n                \"first_name\": \"Jackson\",\n                \"last_name\": \"Sparrow\",\n                \"email\": \"sanni.oluwafikayo@gmail.com\",\n                \"username\": \"oluwafikayomi\",\n                \"roles\": [\n                    \"user\",\n                    \"admin\"\n                ]\n            }\n        },\n        \"user\": {\n            \"id\": 3,\n            \"created_at\": \"2024-04-22T09:46:01.786Z\",\n            \"update_at\": \"2024-04-22T21:37:51.390Z\",\n            \"first_name\": \"Jackson\",\n            \"last_name\": \"Sparrow\",\n            \"email\": \"fikayo.sanni@gmail.com\",\n            \"username\": \"oluwafikayomi\",\n            \"roles\": [\n                \"user\"\n            ]\n        },\n        \"id\": 1,\n        \"created_at\": \"2024-04-22T22:47:36.180Z\",\n        \"update_at\": \"2024-04-22T22:47:36.180Z\"\n    },\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Unlike a Cat",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/favorites/:cat_id",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"favorites",
+								":cat_id"
+							],
+							"variable": [
+								{
+									"key": "cat_id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Allows a user to undo the liking of a cat"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:48:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Like Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-t5W8rLi6c4ib2a2j1+uPJFnleBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:48:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"not found\"\n}"
+						},
+						{
+							"name": "Successfully Unliked",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"35-Z6apwriJwRwOIp2gBE+VZgj1zEU\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:50:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"devMessage\": \"\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch Cat Likes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/favorites/cat/:cat_id?perPage=20&page=1",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"favorites",
+								"cat",
+								":cat_id"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20",
+									"description": "optional"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional"
+								}
+							],
+							"variable": [
+								{
+									"key": "cat_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Fetch the likes a cat has had"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/cat/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"cat",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:55:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Cat Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/cat/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"cat",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "12"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-t5W8rLi6c4ib2a2j1+uPJFnleBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 22:59:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"not found\"\n}"
+						},
+						{
+							"name": "Cat Likes Fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/cat/:cat_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"cat",
+										":cat_id"
+									],
+									"variable": [
+										{
+											"key": "cat_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "877"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36d-MdH1lhstr+IQ6a+xn2A5nEU9iLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 23 Apr 2024 08:14:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 3,\n            \"created_at\": \"2024-04-23T08:14:23.316Z\",\n            \"update_at\": \"2024-04-23T08:14:23.316Z\",\n            \"cat_id\": 1,\n            \"user_id\": 3,\n            \"cat\": {\n                \"id\": 1,\n                \"created_at\": \"2024-04-22T21:55:54.809Z\",\n                \"update_at\": \"2024-04-22T21:55:54.809Z\",\n                \"name\": \"Dexter\",\n                \"birthday\": \"2024-03-24T06:07:42.149Z\",\n                \"breed\": \"persian\",\n                \"user_id\": 4\n            },\n            \"user\": {\n                \"id\": 3,\n                \"created_at\": \"2024-04-22T09:46:01.786Z\",\n                \"update_at\": \"2024-04-23T04:39:00.322Z\",\n                \"first_name\": \"Jackson\",\n                \"last_name\": \"Sparrow\",\n                \"email\": \"fikayo.sanni@gmail.com\",\n                \"username\": \"oluwafikayomi\",\n                \"roles\": [\n                    \"user\"\n                ]\n            }\n        }\n    ],\n    \"meta\": {\n        \"first\": \"http://localhost:5001/api/v1/favorites/cat/1?page=1\",\n        \"last\": \"http://localhost:5001/api/v1/favorites/cat/1?page=NaN\",\n        \"prev\": \"http://localhost:5001/api/v1/favorites/cat/1?page=NaN\",\n        \"next\": \"http://localhost:5001/api/v1/favorites/cat/1?page=NaN\",\n        \"currentPage\": null,\n        \"previousPage\": null,\n        \"lastPage\": null,\n        \"total\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch User Likes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}v1/favorites/user?perPage=20&page=1",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"favorites",
+								"user"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20",
+									"description": "optional"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional"
+								}
+							]
+						},
+						"description": "Fetch the likes a user has made"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:20:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "User Likes Fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "874"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36a-aoZ2tKYUgpas3hvcNhGJfPaPWQI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:22:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"created_at\": \"2024-04-22T22:59:45.716Z\",\n            \"update_at\": \"2024-04-22T22:59:45.716Z\",\n            \"cat_id\": 2,\n            \"user_id\": 3,\n            \"cat\": {\n                \"id\": 2,\n                \"created_at\": \"2024-04-22T22:10:08.773Z\",\n                \"update_at\": \"2024-04-22T22:26:50.653Z\",\n                \"name\": \"Delilah\",\n                \"birthday\": \"2024-03-24T06:07:42.149Z\",\n                \"breed\": \"iberian\",\n                \"user_id\": 4\n            },\n            \"user\": {\n                \"id\": 3,\n                \"created_at\": \"2024-04-22T09:46:01.786Z\",\n                \"update_at\": \"2024-04-22T21:37:51.390Z\",\n                \"first_name\": \"Jackson\",\n                \"last_name\": \"Sparrow\",\n                \"email\": \"fikayo.sanni@gmail.com\",\n                \"username\": \"oluwafikayomi\",\n                \"roles\": [\n                    \"user\"\n                ]\n            }\n        }\n    ],\n    \"meta\": {\n        \"first\": \"http://localhost:5001/api/v1/favorites/user?page=1\",\n        \"last\": \"http://localhost:5001/api/v1/favorites/user?page=NaN\",\n        \"prev\": \"http://localhost:5001/api/v1/favorites/user?page=NaN\",\n        \"next\": \"http://localhost:5001/api/v1/favorites/user?page=NaN\",\n        \"currentPage\": null,\n        \"previousPage\": null,\n        \"lastPage\": null,\n        \"total\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Fetch User Likes (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}v1/favorites/user/:user_id?perPage=20&page=1",
+							"host": [
+								"{{base_url}}v1"
+							],
+							"path": [
+								"favorites",
+								"user",
+								":user_id"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "20",
+									"description": "optional"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "optional"
+								}
+							],
+							"variable": [
+								{
+									"key": "user_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "Allows admin to fetch a user's likes by user id"
+					},
+					"response": [
+						{
+							"name": "No Auth Header",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-V5pIbvC5oUV3100m74QS/oc2G1s\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:23:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 401,\n    \"message\": \"unauthorized\"\n}"
+						},
+						{
+							"name": "Non Admin Auth",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-0ixstFVKVyqTnQa44rThphE5trs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:25:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 403,\n    \"message\": \"forbidden resource\"\n}"
+						},
+						{
+							"name": "User not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-t5W8rLi6c4ib2a2j1+uPJFnleBw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:25:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 404,\n    \"message\": \"not found\"\n}"
+						},
+						{
+							"name": "User Likes Fetched",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{admin_auth}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}v1/favorites/user/:user_id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"favorites",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "882"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"372-ok8eTHYBvRaSrXfD7HCepCEbgfI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 22 Apr 2024 23:26:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": \"SUCCESS\",\n    \"message\": \"\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"created_at\": \"2024-04-22T22:59:45.716Z\",\n            \"update_at\": \"2024-04-22T22:59:45.716Z\",\n            \"cat_id\": 2,\n            \"user_id\": 3,\n            \"cat\": {\n                \"id\": 2,\n                \"created_at\": \"2024-04-22T22:10:08.773Z\",\n                \"update_at\": \"2024-04-22T22:26:50.653Z\",\n                \"name\": \"Delilah\",\n                \"birthday\": \"2024-03-24T06:07:42.149Z\",\n                \"breed\": \"iberian\",\n                \"user_id\": 4\n            },\n            \"user\": {\n                \"id\": 3,\n                \"created_at\": \"2024-04-22T09:46:01.786Z\",\n                \"update_at\": \"2024-04-22T21:37:51.390Z\",\n                \"first_name\": \"Jackson\",\n                \"last_name\": \"Sparrow\",\n                \"email\": \"fikayo.sanni@gmail.com\",\n                \"username\": \"oluwafikayomi\",\n                \"roles\": [\n                    \"user\"\n                ]\n            }\n        }\n    ],\n    \"meta\": {\n        \"first\": \"http://localhost:5001/api/v1/favorites/user/3?page=1\",\n        \"last\": \"http://localhost:5001/api/v1/favorites/user/3?page=NaN\",\n        \"prev\": \"http://localhost:5001/api/v1/favorites/user/3?page=NaN\",\n        \"next\": \"http://localhost:5001/api/v1/favorites/user/3?page=NaN\",\n        \"currentPage\": null,\n        \"previousPage\": null,\n        \"lastPage\": null,\n        \"total\": 1\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Favorites management module, allows users to interact with the cats module by being able to mark and un mark a cat as a favorite"
+		}
+	]
+}

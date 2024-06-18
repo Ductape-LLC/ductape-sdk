@@ -1,8 +1,8 @@
 import * as Joi from "joi";
 
 const schema = Joi.object({
-    app_id: Joi.string().required(),
-    tag: Joi.string().required(),
+    app_id: Joi.string().optional(),
+    tag: Joi.string().optional(),
 });
 
 export default schema;

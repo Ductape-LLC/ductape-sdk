@@ -1,4 +1,5 @@
-import { AppEventSetupTypes, Categories, DataFormats, HttpMethods, InputsTypes, PublicStates, StatusCodes, SuccessMarkerType } from "./enums";
+import mongoose from "mongoose";
+import { AuthTypes, AppEventSetupTypes, Categories, DataFormats, DataTypes, HttpMethods, InputsTypes, PublicStates, StatusCodes, SuccessMarkerType, TokenPeriods } from "./enums";
 import { IParsedInput, IParsedSample, IResponseSuccessMarkers } from "./inputs.types";
 import { IRequestExtension } from "./requests.types";
 
@@ -8,6 +9,11 @@ export interface ICreateAppBuilder {
     unique?: boolean;
     returned?: string;
 }
+
+export interface ICreateApp extends ICreateAppBuilder {
+    tag: string;
+}
+
 
 export interface IAppEvent {
     _id?: string;
@@ -20,6 +26,12 @@ export interface IAppEvent {
     resource: string;
     method: HttpMethods;
     private_key: string;
+    envs?: Array<string>;
+    query: ISample;
+    params: ISample;
+    request?: ISample;
+    response?: ISample;
+    body?: ISample;
     created: Date;
     __v?: number;
 }
@@ -31,16 +43,22 @@ export interface IAppEventEnv {
     __v?: number
 }
 
+export interface IAppAccess {
+    access_tag: string;
+    access: boolean;
+}
+
 export interface IAppAuth {
     _id: string;
     user_id: string;
     app_id: string;
     name: string;
-    setup_type: string;
+    tag: string;
+    setup_type: AuthTypes;
     expiry: number;
-    period: string;
-    resource: string;
-    method: HttpMethods;
+    period: TokenPeriods;
+    action_tag?: string;
+    tokens?: ISample;
     description: string;
     __v: number;
 }
@@ -74,11 +92,13 @@ export interface ICustomEnv {
 
 export interface IAppAction {
     _id?: string;
-    app_id: string;
-    user_id: string;
-    folder_id?: string;
+    app_id?: string;
+    user_id?: string;
+    folder_id?: mongoose.Types.ObjectId;
+    folder_level?: number;
     description: string;
     resource: string;
+    /*url: string;*/
     name: string;
     method: HttpMethods;
     tag: string;
@@ -93,10 +113,19 @@ export interface IAppAction {
     responses?: Array<IAppActionResponseInfo>
 }
 
+export interface IAppFolders {
+    _id: mongoose.Types.ObjectId;
+    name: string;
+    description?: string;
+    parent_id: mongoose.Types.ObjectId | null;
+    level: number;
+}
+
 export interface IApp {
     _id?: string;
     workspace_id: string;
     user_id: string;
+    tag: string;
     app_name: string;
     require_whitelist?: boolean;
     active?: boolean;
@@ -106,13 +135,37 @@ export interface IApp {
     returned: string;
     aboutHTML?: string;
     aboutText?: string;
+    folders?: Array<IAppFolders>;
     domains?: Array<string>;
     envs?: Array<IAppEnv>;
     actions?: Array<IAppAction>;
     auths?: Array<IAppAuth>;
     events?: Array<IAppEvent>;
+    variables?: Array<IAppVariables>;
+    constants?: Array<IAppConstants>;
+    retries?: IAppRetryPolicy;
 }
 
+
+export interface IAppRetryPolicy {
+    max: number;
+    policy: {
+        500: IRetrySettings;
+        502: IRetrySettings;
+        503: IRetrySettings;
+        504: IRetrySettings;
+        400: IRetrySettings;
+        401: IRetrySettings;
+        403: IRetrySettings;
+        404: IRetrySettings;
+        default?: IRetrySettings; 
+    }
+}
+
+export interface IRetrySettings  {
+    available?: boolean
+    lag?: number; // in milliseconds
+};
 
 export interface ILoginPayload {
     email: string;
@@ -168,7 +221,7 @@ export interface IFetchAppPayload extends IRequestExtension {
 
 export interface IAppActionBody extends Omit<IRequestExtension, 'workspace_id'>, IEntityData {
     app_id?: string;
-    action_id: string;
+    action_id?: string;
     // category?: string;
     type: InputsTypes;
 }
@@ -193,9 +246,10 @@ export interface ISuccessValues {
 
 
 export interface IAppActionResponseInfo {
+    _id?: string;
     action_id?: string;
     name: string;
-    tag: string;
+    tag?: string;
     response_format: DataFormats;
     status_code: StatusCodes;
     success: boolean;
@@ -203,29 +257,17 @@ export interface IAppActionResponseInfo {
     body: ISample;
     marker_type?: SuccessMarkerType;
     success_markers?: Array<IParsedInput>;
+    data?: ISample;
     success_values?: ISuccessValues;
     is_status_code_success?: boolean;
+    created?: Date
 }
 
-export interface IAppAuth {
-    _id: string;
-    user_id: string;
-    app_id: string;
-    name: string;
-    tag: string;
-    setup_type: string;
-    expiry: number;
-    period: string;
-    resource: string;
-    method: HttpMethods;
-    description: string;
-    request: ISample;
-    response: ISample;
-    body: ISample;
-}
 
 export interface ISample extends IEntityData {
     type: InputsTypes,
+    status_code?: StatusCodes,
+    method?: HttpMethods,
 }
 
 export interface IAppAuthEnv {
@@ -236,7 +278,7 @@ export interface IAppAuthEnv {
     base_url?: string;
 }
 
-export interface IAppEvent {
+/* export interface IAppEvent {
     _id?: string;
     app_id: string;
     user_id: string;
@@ -250,11 +292,29 @@ export interface IAppEvent {
     created: Date;
     sample: ISample;
     __v?: number;
-}
+} */
 
 export interface IAppEventEnv {
     _id?: string;
     webhook_id: string;
     env_id: string;
     __v?: number
+}
+
+export interface IAppVariables {
+    _id?: string;
+    key: string;
+    type: DataTypes;
+    required: boolean;
+    description: string;
+    minlength: number;
+    maxlength: number;
+}
+
+export interface IAppConstants {
+    _id?: string;
+    key: string;
+    value: string;
+    type: DataTypes;
+    description: string;
 }

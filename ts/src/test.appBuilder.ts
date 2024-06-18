@@ -1,5 +1,6 @@
-import Ductape, { IDuctape } from '.';
-import { DataFormats, HttpMethods, InputsTypes, StatusCodes, SuccessMarkerType } from './types/enums';
+import Ductape from '.';
+import * as fs from 'fs';
+import { AuthTypes, DataFormats, DecoratorPostions, InputsTypes, TokenPeriods } from './types/enums';
 
 const user_id = "658251101a5f969713f004aa";
 const workspace_id = "658252ee6c3a3d2ddae5bd85";
@@ -8,83 +9,95 @@ const ductape = new Ductape({ user_id, workspace_id, private_key });
 
 const run = async () => {
 
-    const builder = await ductape.getAppBuilder();
+    const app = await ductape.getAppBuilder();
 
-    await builder.createApp({
-        app_name: "Zid",
-        description: "E-Commerce Platform"
+    const {app_id: auction_id } = await app.createApp({
+        app_name: "Auction Api",
+        description: "Auction API"
     });
 
-    /*builder.createEnv({
-        env_name: 'development',
-        slug: 'dev',
+    const importer = await ductape.getActionImporter();
+
+    const auctionApiFilePath = '/Users/oluwafikayosanni/Documents/Work/Ductape/ductape-sdk/ts/src/postman.json';
+
+    const auctionApiFilePathData = fs.readFileSync(auctionApiFilePath, 'utf8');
+    const auctionApiData = JSON.parse(auctionApiFilePathData)
+
+    importer.importPostmanV21(auctionApiData, true, auction_id)
+
+    /*const {app_id: cat_id } = await app.createApp({
+        app_name: "Cat Api",
+        description: "Cat API"
+    });
+
+    const catApiFilePath = '/Users/oluwafikayosanni/Documents/Work/Ductape/ductape-sdk/ts/src/postman2.json'
+
+ 
+    const catApiFilePathData = fs.readFileSync(catApiFilePath, 'utf8');
+    const catApiData = JSON.parse(catApiFilePathData)
+
+    importer.importPostmanV21(catApiData, true, cat_id)*/
+
+
+
+    const auctionApi = await ductape.getAppBuilder();
+    const catsApi = await ductape.getAppBuilder();
+
+    await auctionApi.initializeAppByTag('ductape:auction_api');
+    await catsApi.initializeAppByTag('ductape:cat_api')
+
+    auctionApi.updateApp({
+        retries: {
+            max: 5,
+            policy: {
+                500: {available: true, lag: 500000},
+                503: {available: true, lag: 100000},
+                400: {available: true, lag: 500000},
+                401: {available: true, lag: 500000},
+                403: {available: false, lag: 0},
+                404: {available: false, lag: 0}
+            }
+        }
     })
 
-    await builder.updateEnv('dev', {
-        env_name: 'development',
-        description: 'Development Environments'
+
+    /*await auctionApi.updateEnv('prd', {
+        base_url: 'http://localhost:3000'
+    });
+
+    await auctionApi.updateEnv('dev', {
+        base_url: 'http://localhost:3000'
+    });
+
+
+
+    await catsApi.updateEnv('prd', {
+        base_url: 'http://localhost:3001'
+    });
+
+    await catsApi.updateEnv('dev', {
+        base_url: 'http://localhost:3001'
+    });*/
+
+    /*await auctionApi.createAuth({
+        action_tag: 'login',
+        expiry: 7,
+        period: TokenPeriods.HOURS,
+        setup_type: AuthTypes.CREDENTIALS,
+        tag: 'user_login',
+        name: 'Login as a user',
+        description: 'login as a user',
     })
 
-    const envs = builder.fetchEnvs();
-
-    console.log(envs);*/
-
-    const actions = builder.fetchActions();
-
-    console.log(actions)
-
-    const actionPayload = {
-        resource: "/api/v1/posts/:user_id?public_key=srs45576yy",
-        method: HttpMethods.POST,
-        name: "Create post",
-        request_type: DataFormats.JSON,
-        description: "Create a post",
-        body: {
-            type: InputsTypes.JSON,
-            sample: {
-                title: "The King and his Wife",
-                content: "The king and his wife had a child"
-            }
-        },
-        headers: {
-            type: InputsTypes.JSON,
-            sample: {
-                "Authorization": "{{AuthKey}}",
-                "Content-Type": "application/json"
-            }
-        },
-        responses: [{
-            name: "SUCCESS",
-            tag: "POST_CREATED",
-            body: {
-                type: InputsTypes.JSON,
-                sample: {
-                    _id: "17y382892-19283920-18283",
-                    title: "The King and his Wife",
-                    content: "The king and his wife had a child"
-                }
-            },
-            response_format: DataFormats.JSON,
-            status_code: StatusCodes.CREATED,  
-            success: true,
-            is_status_code_success: false,
-            success_values: {
-                type: SuccessMarkerType.KEY,
-                body: {
-                    type: InputsTypes.JSON,
-                    sample: {
-                        _id: "17y382892-19283920-18283",
-                    }
-                }
-            }
-        }]
-
-    }
-
-    // await builder.createAction(actionPayload);
-
-
-    await builder.updateAction('CREATE_POST', {...actionPayload})
+    await catsApi.createAuth({
+        action_tag: 'login',
+        expiry: 7,
+        period: TokenPeriods.HOURS,
+        setup_type: AuthTypes.CREDENTIALS,
+        tag: 'user_login',
+        name: 'Login as a user',
+        description: 'login as a user',
+    })*/
 
 
 

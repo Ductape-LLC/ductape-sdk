@@ -1,5 +1,5 @@
 export const tagify = (str: string) => {
-    return str.replace(/[^A-Z0-9]/gi, '_').toUpperCase();
+    return str.replace(/[^A-Z0-9]/gi, '_').toLowerCase();
 }
 
 

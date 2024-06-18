@@ -1,4 +1,4 @@
-import { ActionsRepo, IActionsRepo } from "./actions.repo";
+/*import { ActionsRepo, IActionsRepo } from "./actions.repo";
 import { ImportPostmanCollectionPayload } from "../types/actions.types";
 
 export interface IActionsService {
@@ -20,4 +20,4 @@ export default class ActionsService {
         return this.actionsRepo.parsePostmanCollectionV21(payload);
     }
 
-}
+}*/

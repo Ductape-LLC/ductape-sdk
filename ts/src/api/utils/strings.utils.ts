@@ -36,3 +36,7 @@ export const extractQueryParams = (url: string): Record<string, string> => {
 
   return params;
 }
+
+export const extractURLPath = (url: string): string => {
+  return url.split('?')[0]; 
+}

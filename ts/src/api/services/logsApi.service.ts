@@ -1,17 +1,22 @@
 import { logsClient } from "../../clients/logs.client";
-import { logDataPayload } from "../../types/logs.types";
+import { ILogData } from "../../logs/logs.types";
+import { generateAxiosConfig } from "../utils/auth.utils";
+import { IRequestExtension } from "../../types/requests.types";
+import { LOGS_CREATE_URL } from "../urls";
+import { DataFormats } from "../../types/enums";
 
 export interface ILogApiService {
-    logData(payload: logDataPayload): Promise<void>
+    logData(data: Array<ILogData>, payload: IRequestExtension): Promise<void>
 }
 
 export class LogApiService implements ILogApiService {
 
     constructor () {}
 
-    async logData(payload: logDataPayload) {
+    async logData(data: Array<ILogData>, payload: IRequestExtension) {
         try {
-            await logsClient('',"application/json").post('', payload);
+            const {token, ...userAuthData} = payload;
+            await logsClient('',"application/json").post(LOGS_CREATE_URL, {...userAuthData, data}, generateAxiosConfig(token, DataFormats.JSON));
         } catch(e){
             throw e;
         }
