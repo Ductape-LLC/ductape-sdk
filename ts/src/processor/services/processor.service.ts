@@ -102,9 +102,6 @@ export default class ProcessorService implements IProcessorService {
 
             //return this.generateOutput(output as unknown as Record<string, IFeatureOutput>);
         } catch (e) {
-            // console.log(this.logService.fetchLogs())
-            // write logs
-
             console.log("JODIE!!!!!", e);
             this.logService.pushLogs()
             return { process_id }
@@ -1051,11 +1048,11 @@ export default class ProcessorService implements IProcessorService {
             }
 
             if (allow_fail === false && retries_left === 0) {
-                console.log("JULIANA")
-                this.logService.generateLogs({ ...this.baseLogs, name: "RUN OUT OF RETRIES", data: output, status: LogEventStatus.FAIL } as unknown as ILogData)
-                //throw new Error("Run out of retries")
+                console.log("JULIANA BAKER!!!")
+                //this.logService.generateLogs({ ...this.baseLogs, name: "RUN OUT OF RETRIES", data: output, status: LogEventStatus.FAIL } as unknown as ILogData)
+                throw new Error("Run out of retries")
 
-                console.log("",this.processingOutput);
+                //console.log("",this.processingOutput);
                 //this.logService.pushLogs();
             }
 
