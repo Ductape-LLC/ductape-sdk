@@ -1,3 +1,4 @@
+import { LogEventStatus } from "../logs/logs.types";
 import { IActionRequest, IDependencyMatrix, IFeatureEvent, IFeatureSequence } from "./integrationsBuilder.types";
 
 export interface IProcessorInput { 
@@ -38,4 +39,16 @@ export interface IProcessingFailure  extends IProcessingSuccess{
 
 export interface IProcessingWaiting extends IProcessingSuccess {
     dependants: Array<IDependencyMatrix>
+}
+
+export interface IProcessorResult {
+    status: LogEventStatus,
+    start: number;
+    end: number;
+    result: IProcessingOutput;
+    env: string;
+    feature_id: string;
+    integration_id: string;
+    process_id: string;
+    input: IProcessorInput;
 }

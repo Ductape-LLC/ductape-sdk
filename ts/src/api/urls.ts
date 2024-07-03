@@ -34,6 +34,8 @@ export const INTEGRATIONS_FETCH_URL: string = '/integrations/v1/workspace/:works
 export const INTEGRATION_CRUD_URL: string = '/integrations/v1/:integration_id';
 export const CHECK_INTEGRATION_EXISTS: string = '/integrations/v1/check-integration-exists';
 
+export const PROCESSOR_SAVE_RESULT: string = '/integrations/v1/processor'
+
 
 export const LOGS_BASE_URL: string = 'http://localhost:8008';
 export const LOGS_CREATE_URL: string = '/log/v1/create';

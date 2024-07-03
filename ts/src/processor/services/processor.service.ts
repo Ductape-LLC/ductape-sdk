@@ -11,6 +11,8 @@ import { IParsedIndexes, IParsedSample } from "../../types/inputs.types";
 import { DataFormats, DecoratorPostions, HttpMethods } from "../../types/enums";
 import httpClient from "../../clients/http.client";
 import { AxiosHeaders } from "axios";
+import { IProcessorApiService, ProcessorApiService } from "../../api/services/processorApi.service";
+import { IRequestExtension } from "../../types/requests.types";
 
 export interface IProcessorService {
     processFeature(data: IProcessorInput): Promise<any>;
@@ -19,12 +21,17 @@ export interface IProcessorService {
 export default class ProcessorService implements IProcessorService {
 
     private user_id: string;
+    private process_id: string;
+    private input: IProcessorInput;
     private workspace_id: string;
     private public_key: string;
     private token: string;
     private integrationBuilderService: IIntegrationsBuilderService;
+    private processorApiService: IProcessorApiService;
     private logService: ILogsService;
     private inputService: IInputsService;
+    private start: number;
+    private end: number;
     private processingOutput: IProcessingOutput;
     private inputData: Record<string, unknown>;
     private processEnv: IIntegrationEnv;
@@ -54,9 +61,13 @@ export default class ProcessorService implements IProcessorService {
         this.inputService = new InputsService();
         this.processingOutput = { success: [], failure: [], waiting: [], skipped: [] }
         this.apps = [];
+
+        this.processorApiService = new ProcessorApiService();
     }
 
     async processFeature(data: IProcessorInput) {
+        this.start = Date.now();
+        this.input = data;
         const { integration_id, env, input, feature_tag } = data;
 
         this.logService = new LogsService({
@@ -68,9 +79,9 @@ export default class ProcessorService implements IProcessorService {
         });
 
         this.integrationId = integration_id;
-        this.inputData = input;
 
         const process_id = generateObjectId();
+        this.process_id = process_id;
         this.baseLogs = { integration_id, env, type: LogEventTypes.FEATURE, process_id, data: input }
         try {
 
@@ -102,9 +113,8 @@ export default class ProcessorService implements IProcessorService {
 
             //return this.generateOutput(output as unknown as Record<string, IFeatureOutput>);
         } catch (e) {
-            console.log("JODIE!!!!!", e);
+            this.end = Date.now();
             this.logService.pushLogs()
-            return { process_id }
         }
     }
 
@@ -541,7 +551,7 @@ export default class ProcessorService implements IProcessorService {
                     } else if (value.startsWith('$Sequence{')) {
                         Object.assign(payload, { [key]: await this.generateSequenceValue(stages) })
                     } else if (value.startsWith('$Input{')) {
-                        Object.assign(payload, { [key]: await this.generateInputValue(this.inputData, stages) })
+                        Object.assign(payload, { [key]: await this.generateInputValue(this.input.input, stages) })
                     } else if (value === '$Default') {
 
                         Object.assign(payload, { [key]: await this.generateDefaultValue(sample, { ...index, key }) })
@@ -958,7 +968,7 @@ export default class ProcessorService implements IProcessorService {
                 payloads = await this.constructJSONDataPayloads(event.input, samples, event); // fix this o
             }
 
-            await this.processRequest({ request_base_url, resource, method, env, payloads }, event, retries);
+            await this.processRequest({ request_base_url, resource, method, env, payloads, app_id: app._id }, event, retries);
 
         } catch (e) {
             throw e;
@@ -968,22 +978,35 @@ export default class ProcessorService implements IProcessorService {
     }
 
     async processRequest(payload: IRetryMeta, event: IFeatureEvent, retries: IAppRetryPolicy) {
-        const { request_base_url, resource, payloads, method, env } = payload
+        const { request_base_url, resource, payloads, method, env, app_id } = payload
+        this.logService.generateLogs({ ...this.baseLogs, name: "Process Request", data: {request: payload}, status: LogEventStatus.PROCESSING, app_id, action: event.event  } as unknown as ILogData)
+        const start = Date.now();
         try {
+            
             const results = await this.sendActionRequest(request_base_url, resource, payloads, method, env);
+            const end = Date.now();
+
+            this.logService.generateLogs({ ...this.baseLogs, name: "Process Request", data: {response: results}, status: LogEventStatus.SUCCESS, app_id, action: event.event, start, end  } as unknown as ILogData)
             await this.addToSuccessOutput(event, results);
             return true;
         } catch (e) {
+            const end = Date.now();
+            this.logService.generateLogs({ ...this.baseLogs, name: "Process Request", data: {error: e}, status: LogEventStatus.FAIL, app_id, action: event.event, start, end  } as unknown as ILogData)
             try {
-                this.addToFailureOutput(e, event, retries, { request_base_url, resource, method, env, payloads });
+                this.addToFailureOutput(e, event, retries, {
+                    request_base_url, resource, method, env, payloads,
+                    app_id,
+                });
             } catch (err) {
-                console.log("Juliana!!!!", err);
+                console.log("Juliana Krane!!!!", err);
                 throw err;
             }
         }
     }
 
     async addToSuccessOutput(event: IFeatureEvent, output: any) {
+
+        console.log("SUCCESS", event, output)
         this.processingOutput.success.push({ event, output });
 
         await this.processWaitingEvents();
@@ -1034,6 +1057,8 @@ export default class ProcessorService implements IProcessorService {
                 event,
             }
 
+            console.log("FAILURE!!!!", output);
+
             if (allow_fail === true && retries === 0) {
                 this.processingOutput.skipped.push(output);
             } else {
@@ -1042,23 +1067,29 @@ export default class ProcessorService implements IProcessorService {
 
             if (retries_left > 0) {
                 setTimeout(() => {
+
+                    console.log("LogService", this.logService);
                     this.logService.generateLogs({ ...this.baseLogs, name: "Retrying Action", data: output, status: LogEventStatus.PROCESSING } as unknown as ILogData)
                     this.processRequest(payload, event, policy)
                 }, retry_at);
             }
 
             if (allow_fail === false && retries_left === 0) {
-                console.log("JULIANA BAKER!!!")
-                //this.logService.generateLogs({ ...this.baseLogs, name: "RUN OUT OF RETRIES", data: output, status: LogEventStatus.FAIL } as unknown as ILogData)
-                throw new Error("Run out of retries")
+                console.log("JULIANA BAKER!!!", this.logService)
+                this.logService.generateLogs({ ...this.baseLogs, name: "RUN OUT OF RETRIES", data: output, status: LogEventStatus.FAIL } as unknown as ILogData)
+                //throw new Error("Run out of retries")
 
+                this.end = Date.now();
+                this.writeResult(LogEventStatus.FAIL)
+                this.logService.pushLogs();
+                console.log("Duration:", this.end - this.start)
                 //console.log("",this.processingOutput);
                 //this.logService.pushLogs();
             }
 
 
         } catch (e) {
-            console.log("SAMMY ROSCOE")
+            //console.log("SAMMY ROSCOE")
 
             throw e;
 
@@ -1157,5 +1188,28 @@ export default class ProcessorService implements IProcessorService {
 
     async processDBAction(db_action: IFeatureEvent) {
 
+    }
+
+    async writeResult(status: LogEventStatus) {
+        this.processorApiService.saveResult({
+            status,
+            start: this.start,
+            end: this.end,
+            result: this.processingOutput,
+            process_id: this.process_id,
+            feature_id: this.feature._id,
+            integration_id: this.input.integration_id,
+            env: this.input.env,
+            input: this.input,
+        },this.getUserAccess())
+    }
+
+    private getUserAccess(): IRequestExtension {
+        return {
+            user_id: this.user_id,
+            workspace_id: this.workspace_id,
+            token: this.token,
+            public_key: this.public_key,
+        }
     }
 }

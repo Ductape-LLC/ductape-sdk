@@ -129,6 +129,7 @@ export interface IRetryMeta {
   method: HttpMethods;
   env: IAppEnv;
   payloads: any;
+  app_id: string;
 }
 
 export interface IFeatureEvent {
